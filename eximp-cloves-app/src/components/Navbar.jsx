@@ -22,7 +22,7 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Estates', path: '/properties' },
+        // { name: 'Estates', path: '/properties' },
         { name: 'Services', path: '/services' },
         { name: 'About', path: '/about' },
         { name: 'Contact Us', path: '/contact' },
@@ -59,7 +59,7 @@ const Navbar = () => {
 
                 <Link
                     to="/contact"
-                    className="btn-primary desktop-only-btn"
+                    className="btn-nav-highlight desktop-only-btn"
                     style={{
                         visibility: location.pathname === '/contact' ? 'hidden' : 'visible',
                         pointerEvents: location.pathname === '/contact' ? 'none' : 'auto'

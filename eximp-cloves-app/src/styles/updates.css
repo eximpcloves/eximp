@@ -4,12 +4,14 @@
 
 .update-notification {
     position: fixed;
-    bottom: 30px;
+    bottom: 1.875rem;
+    /* 30px -> 1.875rem */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10001;
     width: 90%;
-    max-width: 500px;
+    max-width: 31.25rem;
+    /* 500px -> 31.25rem */
 }
 
 .update-content {
@@ -18,7 +20,8 @@
     border: 1px solid var(--primary-color);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
     padding: 1rem 1.5rem;
-    border-radius: 20px;
+    border-radius: 1.25rem;
+    /* 20px -> 1.25rem */
     display: flex;
     align-items: center;
     gap: 1.25rem;
@@ -42,8 +45,10 @@
     background: var(--primary-color);
     color: #000;
     border: none;
-    padding: 8px 16px;
-    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    /* 8px 16px -> rem */
+    border-radius: 0.75rem;
+    /* 12px -> 0.75rem */
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
@@ -61,7 +66,8 @@
     border: none;
     color: var(--text-muted);
     cursor: pointer;
-    padding: 5px;
+    padding: 0.3125rem;
+    /* 5px -> 0.3125rem */
     display: flex;
     align-items: center;
     transition: var(--transition-smooth);
@@ -86,7 +92,7 @@
 }
 
 /* Mobile: full-width bottom bar */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .update-notification {
         bottom: 0;
         left: 0;
@@ -120,10 +126,12 @@
     .update-btn {
         flex: 1;
         text-align: center;
-        padding: 10px 20px;
+        padding: 0.625rem 1.25rem;
+        /* 10px 20px -> rem */
     }
 
     .update-close {
-        padding: 8px;
+        padding: 0.5rem;
+        /* 8px -> 0.5rem */
     }
 }

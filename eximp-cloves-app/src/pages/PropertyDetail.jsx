@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, ChevronLeft, Calendar, Shield, Users, FileText, CheckCircle2, ChevronDown, ChevronUp, Search } from 'lucide-react';
+import { MapPin, ChevronLeft, Calendar, Shield, Users, FileText, CheckCircle2, ChevronDown, ChevronUp, Search, Wifi, GraduationCap, Library, Box, ShoppingBag, Trophy, Circle, Database, MessageSquare, MessageCircle } from 'lucide-react';
 import { propertiesData } from '../data/propertiesData';
 import Reveal from '../components/Reveal';
 import '../styles/property-detail.css';
+
+const iconMap = {
+    Wifi: Wifi,
+    GraduationCap: GraduationCap,
+    Library: Library,
+    Box: Box,
+    ShoppingBag: ShoppingBag,
+    Trophy: Trophy,
+    Circle: Circle,
+    Database: Database
+};
 
 const PropertyDetail = () => {
     const { slug } = useParams();
@@ -18,13 +29,15 @@ const PropertyDetail = () => {
 
     if (!property) {
         return (
-            <div className="property-detail-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ textAlign: 'center', padding: '10rem 2rem' }}>
-                    <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Property Not Found</h1>
-                    <p style={{ color: '#94a3b8', marginBottom: '2rem' }}>The estate you are looking for might have been moved or renamed.</p>
-                    <Link to="/properties" className="back-link" style={{ position: 'relative', top: 0, left: 0 }}>
-                        <ChevronLeft size={20} /> Back to Properties
-                    </Link>
+            <div className="property-detail-page">
+                <div className="not-found-container">
+                    <div className="not-found-content">
+                        <h1>Property Not Found</h1>
+                        <p>The estate you are looking for might have been moved or renamed.</p>
+                        <Link to="/properties" className="back-link">
+                            <ChevronLeft size={20} /> Back to Properties
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
@@ -49,7 +62,7 @@ const PropertyDetail = () => {
                     <Reveal>
                         <h1>{property.title}</h1>
                         <div className="hero-location">
-                            <MapPin size={20} color="var(--primary-color)" />
+                            <MapPin size={20} color="#EEA157" />
                             <span>{property.location}</span>
                         </div>
                     </Reveal>
@@ -57,74 +70,133 @@ const PropertyDetail = () => {
             </section>
 
             <div className="container">
-                {/* Main Content & Sidebar Grid */}
+                {/* Main Content */}
                 <section className="detail-section">
-                    <div className="section-grid">
-                        <div className="detail-main">
-                            <Reveal>
-                                <div className="overview-card">
-                                    <h2>Estate Overview</h2>
-                                    <p>{property.description}</p>
-
-                                    <div className="features-grid">
-                                        {property.tags && property.tags.map((tag, idx) => (
-                                            <div key={idx} className="feature-tag">
-                                                <CheckCircle2 size={18} />
-                                                <span>{tag}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                    <Reveal>
+                        <div className="overview-card">
+                            <div className="overview-header-row">
+                                <h2>Estate Overview</h2>
+                                <div className="verified-badge-inline">
+                                    <Shield size={16} /> {property.status}
                                 </div>
-                            </Reveal>
+                            </div>
+                            <p>{property.description}</p>
 
-                            {/* Landmarks Section */}
-                            {property.landmarks && property.landmarks.length > 0 && (
-                                <Reveal delay={0.2}>
-                                    <div className="landmark-card" style={{ marginTop: '3rem' }}>
-                                        <h3>Nearby Landmarks</h3>
-                                        <div className="landmark-list">
-                                            {property.landmarks.map((landmark, idx) => (
-                                                <div key={idx} className="landmark-item">
-                                                    <span>{landmark}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </Reveal>
+                            {/* Key Features Highlight Box (New) */}
+                            {property.keyFeatures && (
+                                <div className="key-features-box">
+                                    <h3>Key Features</h3>
+                                    <p>{property.keyFeatures}</p>
+                                </div>
                             )}
-                        </div>
 
-                        <div className="detail-sidebar">
-                            <Reveal delay={0.3}>
-                                <div className="price-booking-card">
-                                    <div className="price-header">
-                                        <div className="price-label">Starting Price</div>
-                                        <span className="sidebar-status-tag">{property.status}</span>
+                            <div className="features-grid">
+                                {property.tags && property.tags.map((tag, idx) => (
+                                    <div key={idx} className="feature-tag">
+                                        <CheckCircle2 size={18} />
+                                        <span>{tag}</span>
                                     </div>
-                                    <div className="price-value">{property.price}</div>
-                                    <button className="booking-btn" onClick={() => window.location.href = '/contact'}>
-                                        <Calendar size={20} /> Book Free Inspection
-                                    </button>
-                                </div>
-                            </Reveal>
-
-                            <Reveal delay={0.4}>
-                                <div className="landmark-card">
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                                        <Shield size={24} color="var(--primary-color)" />
-                                        <h3 style={{ margin: 0 }}>Verified Property</h3>
-                                    </div>
-                                    <p style={{ color: '#94a3b8', fontSize: '0.95rem' }}>
-                                        This estate has been thoroughly verified by Eximp & Cloves legal team. Titles are documented and free from encumbrances.
-                                    </p>
-                                </div>
-                            </Reveal>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    </Reveal>
+
+                    {/* Landmarks Section (Now Full Width or Grid) */}
+                    {property.landmarks && property.landmarks.length > 0 && (
+                        <Reveal delay={0.2}>
+                            <div className="landmark-card-modern">
+                                <h3>Nearby Landmarks</h3>
+                                <div className="landmark-grid-modern">
+                                    {property.landmarks.map((landmark, idx) => (
+                                        <div key={idx} className="landmark-item-modern">
+                                            <MapPin size={16} color="#EEA157" />
+                                            <span>{landmark}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </Reveal>
+                    )}
                 </section>
 
-                {/* Payment Plans Section */}
-                {property.paymentPlans && property.paymentPlans.length > 0 && (
+                {/* Estate Amenities Grid (Full Width) */}
+                {property.amenities && (
+                    <Reveal delay={0.2}>
+                        <div className="amenities-section">
+                            <h2>Estate Amenities</h2>
+                            <div className="amenities-grid">
+                                {property.amenities.map((item, idx) => {
+                                    const IconComponent = iconMap[item.icon] || Shield;
+                                    return (
+                                        <div key={idx} className="amenity-card">
+                                            <IconComponent size={22} color="#EEA157" />
+                                            <h3>{item.title}</h3>
+                                            <p>{item.desc}</p>
+                                        </div>
+                                    );
+                                })}
+                                {property.visionCard && (
+                                    <div className="amenity-card vision-card">
+                                        <p>{property.visionCard}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </Reveal>
+                )}
+
+                {/* New Specialized Payment Plan Section */}
+                {property.sizePaymentPlans && (
+                    <section className="payment-plans-modern">
+                        <Reveal>
+                            <div className="payment-header-modern">
+                                <h2>Payment Plan</h2>
+                                {property.paymentPlanHeader && (
+                                    <div className="payment-sub-info">
+                                        <p>Initial Deposit: <strong>{property.paymentPlanHeader.deposit}</strong></p>
+                                        <p>{property.paymentPlanHeader.promo}</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="size-cards-grid">
+                                {property.sizePaymentPlans.map((plan, idx) => (
+                                    <div key={idx} className="size-card">
+                                        <div className="size-header">
+                                            <h3>{plan.size}</h3>
+                                            <span>{plan.sqm}</span>
+                                        </div>
+                                        <div className="size-pricing">
+                                            <div className="old-price">{plan.oldPrice}</div>
+                                            <div className="new-price">{plan.newPrice}</div>
+                                        </div>
+                                        <div className="size-stats">
+                                            <div className="stat-item">
+                                                <span>Discount</span>
+                                                <strong>{plan.discount}</strong>
+                                            </div>
+                                            <div className="stat-item">
+                                                <span>Balance</span>
+                                                <strong>{plan.balance}</strong>
+                                            </div>
+                                            <div className="stat-item">
+                                                <span>4 Mo. Plan</span>
+                                                <strong>{plan.monthly4}</strong>
+                                            </div>
+                                            <div className="stat-item">
+                                                <span>6 Mo. Plan</span>
+                                                <strong>{plan.monthly6}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </Reveal>
+                    </section>
+                )}
+
+                {/* Legacy Payment Plans Section */}
+                {property.paymentPlans && property.paymentPlans.length > 0 && !property.sizePaymentPlans && (
                     <section className="payment-section">
                         <Reveal>
                             <h2 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '3rem' }}>Flexible Payment Plans</h2>
@@ -159,11 +231,8 @@ const PropertyDetail = () => {
                     <section className="detail-video-section">
                         <div className="container">
                             <Reveal>
-                                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                                    <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Experience the Estate</h2>
-                                    <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Take a virtual walk through {property.title} from the comfort of your home.</p>
-                                </div>
-
+                                <h2>Experience the Estate</h2>
+                                <p className="video-subtitle">Take a virtual walk through {property.title} from the comfort of your home.</p>
                                 <VideoGallery property={property} />
                             </Reveal>
                         </div>
@@ -231,20 +300,23 @@ const PropertyDetail = () => {
             </div>
 
             {/* Bottom CTA */}
-            <section style={{ padding: '3rem 0', textAlign: 'center', background: 'linear-gradient(to top, rgba(67, 97, 238, 0.05), transparent)' }}>
+            <section className="property-cta-section">
+                <div className="cta-glow"></div>
                 <div className="container">
                     <Reveal>
-                        <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Ready to Invest?</h2>
-                        <p style={{ color: '#94a3b8', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-                            Secure your future today with {property.title}. Speak with our consultants to get started.
-                        </p>
-                        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <button className="booking-btn" style={{ width: 'auto', padding: '1rem 3rem' }} onClick={() => window.location.href = '/contact'}>
-                                Contact Us
-                            </button>
-                            <button className="back-link" style={{ position: 'relative', top: 0, left: 0 }} onClick={() => window.location.href = 'https://wa.me/2349126864383'}>
-                                Chat on WhatsApp
-                            </button>
+                        <div className="cta-card-modern">
+                            <h2>Ready to Invest?</h2>
+                            <p>
+                                Secure your future today with <strong>{property.title}</strong>. Speak with our property consultants to start your journey.
+                            </p>
+                            <div className="cta-buttons-modern">
+                                <button className="cta-primary-btn" onClick={() => window.location.href = '/contact'}>
+                                    <MessageSquare size={18} /> Contact Us
+                                </button>
+                                <a href="https://wa.me/2349126864383" target="_blank" rel="noopener noreferrer" className="cta-secondary-btn">
+                                    <MessageCircle size={18} /> Chat on WhatsApp
+                                </a>
+                            </div>
                         </div>
                     </Reveal>
                 </div>
@@ -280,7 +352,7 @@ const VideoGallery = ({ property }) => {
                 )}
             </div>
 
-            <div className="video-player-container">
+            <div className={`video-player-container ${activeVideo}-active`}>
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeVideo}

@@ -43,7 +43,55 @@ export const propertiesData = {
         status: "Sold Out",
         tags: ["200/300/500 SQM", "Dry Land", "Min Deposit: ₦750K"],
         image: "/assets/prime_circle_flyer_main.png",
-        description: "A prestigious development in the heart of Gwagwalada, Abuja. Prime Circle Estate offered an ideal balance of city access and peaceful living, now successfully sold out to early investors.",
+        description: "You already know Abuja as the seat of power. Now watch it become the seat of next-gen living. Prime Circle Estate brings forward-thinking residential development where tech meets tranquility, the kind of lifestyle that was once reserved for luxury hubs like Eko Atlantic and Xalara-inspired districts. This smart estate delivers what modern investors want: more than land, but real possibilities. A future-proof community with intelligent infrastructure in a location built to elevate both your lifestyle and land value.",
+        keyFeatures: "Strategically situated near the University of Abuja, Teaching Hospital, and Family Worship Center, Prime Circle connects you to everything that matters, education, healthcare, and spiritual wellness.",
+        amenities: [
+            { icon: 'Wifi', title: 'Smart Home Automation', desc: 'Seamless control of lighting, security, and utilities from your phone.' },
+            { icon: 'GraduationCap', title: 'Tech Institute for Kids', desc: 'Designed to nurture the next generation of coders, creators, and critical thinkers.' },
+            { icon: 'Library', title: 'Research Hub & Library', desc: 'A serene knowledge center for focused study, innovation, and research development.' },
+            { icon: 'Box', title: 'Innovation Incubators', desc: 'Dedicated spaces for startups, entrepreneurs, and digital builders.' },
+            { icon: 'ShoppingBag', title: 'Mini Mall', desc: 'Shop essentials and lifestyle luxuries without leaving your zone.' },
+            { icon: 'Trophy', title: 'Mini Golf Course', desc: 'Leisure meets luxury with a relaxing green for weekend play.' },
+            { icon: 'Circle', title: 'Tennis Court & Swimming Pool', desc: 'Active living for residents who value movement and wellness.' },
+            { icon: 'Database', title: 'Data Centers', desc: 'Secure digital infrastructure for modern businesses and cloud-first living.' }
+        ],
+        visionCard: "Prime Circle Estate invites visionaries and future residents into a community where intelligent living, peaceful surroundings, and lasting value are more than promises; they're the foundation.",
+        paymentPlanHeader: {
+            deposit: "₦500,000",
+            promo: "Pre-Launch Promo Price"
+        },
+        sizePaymentPlans: [
+            {
+                size: "Size 1",
+                sqm: "200sqm",
+                oldPrice: "₦5,500,000",
+                newPrice: "₦2,000,000",
+                discount: "63.64% OFF",
+                balance: "₦1,500,000",
+                monthly4: "₦375,000",
+                monthly6: "₦250,000"
+            },
+            {
+                size: "Size 2",
+                sqm: "300sqm",
+                oldPrice: "₦6,500,000",
+                newPrice: "₦3,000,000",
+                discount: "53.85% OFF",
+                balance: "₦2,500,000",
+                monthly4: "₦625,000",
+                monthly6: "₦416,667"
+            },
+            {
+                size: "Size 3",
+                sqm: "500sqm",
+                oldPrice: "₦10,000,000",
+                newPrice: "₦5,000,000",
+                discount: "50% OFF",
+                balance: "₦4,500,000",
+                monthly4: "₦1,125,000",
+                monthly6: "₦750,000"
+            }
+        ],
         landmarks: ["Kaida Layout", "University of Abuja", "Gwagwalada Central"],
         faq: []
     },

@@ -75,6 +75,7 @@ const Contact = () => {
                 <div className="container">
                     <Reveal>
                         <div className="hero-content-centered">
+                            <span className="contact-hero-label">Contact Us</span>
                             <h1>Let's Start a Conversation</h1>
                             <p>Whether you're looking to invest, inspect, or inquire, our team is ready to guide you.</p>
                         </div>
@@ -282,7 +283,7 @@ const Contact = () => {
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.717646101234!2d3.4292724!3d6.4333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53ca2673d3b%3A0xe10438ec30164627!2s16+Adeola+Hopewell+St%2C+Victoria+Island%2C+Lagos+106104!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng"
                                         width="100%"
-                                        height="250"
+                                        height="200"
                                         style={{ border: 0 }}
                                         allowFullScreen=""
                                         loading="lazy"
@@ -294,14 +295,19 @@ const Contact = () => {
                         </Reveal>
 
                         <Reveal delay={0.6} x={20}>
-                            <div className="finance-card plain-style">
+                            <div className="finance-card">
                                 <div className="finance-header">
-                                    <CheckCircle2 size={24} color="#25D366" />
+                                    <div className="finance-status">
+                                        <CheckCircle2 size={16} color="#25D366" />
+                                        <span>Verified</span>
+                                    </div>
                                     <h3>Official Finance Channel</h3>
                                 </div>
-                                <p>For payments, transaction slips, and financial inquiries, please chat with our MD directly via our verified channel.</p>
-                                <a href="https://wa.me/2349126864383" target="_blank" rel="noopener noreferrer" className="btn-outline-finance">
-                                    <Phone size={16} /> Chat with Finance
+                                <p className="finance-desc">
+                                    Send payment slips or inquire about financial plans directly via our secure WhatsApp line.
+                                </p>
+                                <a href="https://wa.me/2349126864383" target="_blank" rel="noopener noreferrer" className="btn-finance">
+                                    <MessageSquare size={18} /> Chat with Finance
                                 </a>
                             </div>
                         </Reveal>
@@ -309,7 +315,7 @@ const Contact = () => {
                 </div>
 
                 {/* 4. FAQ Section */}
-                <section className="faq-section">
+                <section className="faq-section section-lg">
                     <Reveal>
                         <div className="section-header-small">
                             <h2>Frequently Asked Questions</h2>
