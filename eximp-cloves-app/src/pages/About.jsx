@@ -99,36 +99,95 @@ const About = () => {
                 </div>
             </section>
 
-            {/* ── Leadership Section (Managing Director) ───────────── */}
+            {/* ── Leadership & Governance Section ───────────── */}
             <section className="about-leadership section">
                 <div className="container">
                     <div className="leadership-header">
                         <Reveal>
-                            <span className="leadership-label">Leadership</span>
-                            <h2 className="leadership-title">Our Managing Director</h2>
+                            <span className="leadership-label">Leadership & Governance</span>
+                            <h2 className="leadership-title">Our Leadership Team</h2>
+                            <p className="leadership-subtitle">
+                                Guided by visionary leadership and protected by world-class legal oversight.
+                            </p>
                         </Reveal>
                     </div>
 
+                    {/* MD / CEO PROFILE */}
                     <div className="md-profile">
                         <Reveal y={30}>
                             <div className="md-card">
                                 <div className="md-image">
-                                    <img src="/md_portrait.png" alt="Managing Director" />
+                                    <img src="/assets/MD_CEO.jpg" alt="Adebayo O. Steven (Jasper Stevens)" />
                                 </div>
                                 <div className="md-info">
-                                    <h3>Justin Torff</h3>
+                                    <h3>Jasper Stevens<br /><small>(Adebayo O. Steven)</small></h3>
                                     <p className="md-role">Managing Director / CEO</p>
                                     <div className="md-bio">
                                         <p>
-                                            With over a decade of experience in the Nigerian real estate and infrastructure sector,
-                                            our Managing Director leads Eximp & Cloves with a singular vision: to bridge the gap
-                                            between aspiration and ownership.
+                                            A native of Epe, Lagos, Nigeria, is a dynamic MD/CEO with over a decade of experience across technology, blockchain, venture capital, medical research, and real estate development.
                                         </p>
                                         <p>
-                                            His leadership is defined by a commitment to transparency, quality, and the strategic
-                                            repositioning of prime land into high-value residential and commercial developments.
-                                            Under his guidance, the company has successfully delivered numerous projects that
-                                            stand as testaments to architectural excellence and investment security.
+                                            With a strong background in the medical field as a research analyst, he has contributed to healthcare innovation since launching his career in Lagos. He pioneered blockchain-AI platforms for transparent finance and supply chains, then advanced into venture capital, investing in 50+ early-stage African startups with multiple successful exits.
+                                        </p>
+                                        <p>
+                                            In medical research, he has driven telemedicine and secure blockchain-based health-data systems to enhance care access in underserved communities. In real estate, he leads sustainable smart-city projects in Lagos and beyond, focusing on affordable housing and community integration.
+                                        </p>
+                                        <p>
+                                            A passionate advocate for education, Jasper addresses the out-of-school children crisis by providing scholarships, digital tools, and STEM/vocational training. His initiatives have reintegrated over 5,000 youths from marginalized communities into educational pathways.
+                                        </p>
+                                        <p>
+                                            As a TEDx speaker (TEDxUNIZIK), Jasper shares insights on innovation, decentralized systems, and data sovereignty. He holds degrees from multiple Business Schools across the world and lives by his principle: <strong>“Innovation for All.”</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
+                    </div>
+
+                    {/* LEGAL & COMPLIANCE GRID */}
+                    <div className="governance-grid">
+                        <Reveal y={30} delay={0.2}>
+                            <div className="governance-card">
+                                <div className="gov-image">
+                                    <img src="/assets/legal compliance associate.jpg" alt="Godslove S. Nnaji Esq." />
+                                </div>
+                                <div className="gov-info">
+                                    <span className="gov-tag">Internal Compliance</span>
+                                    <h3>Godslove S. Nnaji Esq.</h3>
+                                    <p className="gov-role">Legal Officer & Compliance Associate</p>
+                                    <div className="gov-bio">
+                                        <p>
+                                            Godslove S. Nnaji Esq. is an associate at Delaw LP and an Associate Member of the Institute of Chartered Mediators and Conciliators. A prolific Intellectual and Emerging Technology Law Practitioner; he has advised companies and government parastatals including but not limited to FXTM, Samsung, AMCON, Phillips Outsourcing, etc on multi-million deals.
+                                        </p><br></br>
+                                        <p>
+                                            He works with Eximp and Cloves as its Legal and Compliance Associate.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
+
+                        <Reveal y={30} delay={0.3}>
+                            <div className="governance-card">
+                                <div className="gov-image">
+                                    <img src="/assets/Legal partner.jpg" alt="Lightfield Legal Practitioners" />
+                                </div>
+                                <div className="gov-info">
+                                    <span className="gov-tag">External Legal Partner</span>
+                                    <h3>Lightfield Legal Practitioners</h3>
+                                    <p className="gov-role">Institutional Legal Advisory</p>
+                                    <div className="gov-bio">
+                                        <p>
+                                            Lightfield Legal Practitioners (Lightfield LP) is a forward-thinking firm pioneering legal excellence in Africa&apos;s digital economy. Founded by Managing Partner Balogun Sofiyullahi, a seasoned expert in technology law and real estate, the firm brings together a multidisciplinary team of distinguished professionals to deliver innovative legal solutions across the continent.
+                                        </p><br></br>
+                                        <p>
+                                            The team includes Prof. Salim Bashir Magashi (Dean of Law at ABU), Yahaya Danasabe Dangana (SAN), Dr. Hassan Bala, Gidado Taofeek Esq., and Shehu Abdulwaheed Adisa. Together, they offer advisory and litigation services spanning artificial intelligence law, property law, and regulatory compliance.
+                                        </p><br></br>
+                                        <p>
+                                            At Eximp and Cloves, we are proud to have Lightfield LP as our trusted legal partner. Their client-centric approach equips us with the legal clarity needed to navigate property regulations, protect our business interests, and continue delivering quality projects with confidence and integrity.
+                                        </p><br></br>
+                                        <p>
+                                            Lightfield LP&apos;s notable achievements include speaking at the TechNova Summit 2026 and maintaining partnerships with global entities like TechCorp Global and AI Systems Inc. Their guiding principle: <strong>“Empowering every transaction with clarity, excellence, and unwavering integrity.”</strong>
                                         </p>
                                     </div>
                                 </div>

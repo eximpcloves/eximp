@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, Twitter, Linkedin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, Twitter, Linkedin, Send, Music2, ShieldAlert } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Footer = () => {
+    const { isDark } = useTheme();
+
     return (
         <footer className="footer">
             <div className="container">
@@ -17,7 +20,12 @@ const Footer = () => {
                                 src="https://eximpcloves.substack.com/embed"
                                 width="100%"
                                 height="180"
-                                style={{ border: 'none', background: 'transparent' }}
+                                style={{
+                                    border: 'none',
+                                    background: '#ffffff',
+                                    filter: isDark ? 'invert(1) hue-rotate(180deg) brightness(0.9)' : 'none',
+                                    borderRadius: '8px'
+                                }}
                                 frameBorder="0"
                                 scrolling="no"
                                 title="Newsletter Subscribe"
@@ -31,7 +39,10 @@ const Footer = () => {
                     <div className="footer-grid">
                         <div className="footer-brand">
                             <Link to="/" className="logo">
-                                <img src="/logo.svg" alt="Eximp & Cloves Logo" />
+                                <img
+                                    src={isDark ? "/logo.svg" : "/light%20theme%20logo.png"}
+                                    alt="Eximp & Cloves Logo"
+                                />
                             </Link>
                             <p className="brand-desc">
                                 Invest in Nigeria's fastest-growing locations with flexible payment plans.
@@ -40,6 +51,7 @@ const Footer = () => {
                             <div className="social-links-footer">
                                 <a href="https://facebook.com/eximp.cloves" target="_blank" rel="noopener noreferrer"><Facebook size={20} /></a>
                                 <a href="https://instagram.com/eximp.cloves" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
+                                <a href="https://tiktok.com/@eximp.cloves" target="_blank" rel="noopener noreferrer"><Music2 size={20} /></a>
                                 <a href="https://x.com/eximp_cloves" target="_blank" rel="noopener noreferrer"><Twitter size={20} /></a>
                                 <a href="https://www.linkedin.com/company/eximp-cloves" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
                             </div>
@@ -50,6 +62,7 @@ const Footer = () => {
                             <ul>
                                 <li><Link to="/about">About Us</Link></li>
                                 <li><Link to="/properties">Pricing</Link></li>
+                                <li><Link to="/careers">Careers</Link></li>
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
                         </div>

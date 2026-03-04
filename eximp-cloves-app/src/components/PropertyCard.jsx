@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { useVideo } from '../context/VideoContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -208,7 +209,7 @@ const PropertyCard = ({ id, slug, title, location, price, image, tags, status, v
                                 <h4 style={{ color: 'var(--primary-color)', fontSize: '0.8rem', marginBottom: '1rem' }}>Proximity & Landmarks</h4>
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     {landmarks.map((landmark, idx) => (
-                                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', fontSize: '0.85rem', marginBottom: '8px' }}>
+                                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontSize: '0.85rem', marginBottom: '8px' }}>
                                             <CheckCircle size={14} color="var(--primary-color)" /> {landmark}
                                         </li>
                                     ))}
@@ -227,7 +228,7 @@ const PropertyCard = ({ id, slug, title, location, price, image, tags, status, v
                                 <h4 style={{ color: 'var(--primary-color)', fontSize: '0.8rem', marginBottom: '1rem' }}>Legal Documentation</h4>
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     {standardDocuments.map((doc, idx) => (
-                                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', fontSize: '0.85rem', marginBottom: '10px' }}>
+                                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontSize: '0.85rem', marginBottom: '10px' }}>
                                             <FileText size={14} color="var(--primary-color)" /> {doc}
                                         </li>
                                     ))}
@@ -262,85 +263,88 @@ const PropertyCard = ({ id, slug, title, location, price, image, tags, status, v
                 </div>
             </motion.div>
 
-            <AnimatePresence>
-                {showVideo && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="video-modal-overlay"
-                        onClick={() => {
-                            setShowVideo(false);
-                            setIsVideoPlaying(false);
-                        }}
-                    >
+            {createPortal(
+                <AnimatePresence>
+                    {showVideo && (
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            className="video-modal-content"
-                            onClick={e => e.stopPropagation()}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="video-modal-overlay"
+                            onClick={() => {
+                                setShowVideo(false);
+                                setIsVideoPlaying(false);
+                            }}
                         >
-                            <div className="modal-actions">
-                                <button type="button" className="action-btn fullscreen-btn" onClick={toggleFullscreen}>
-                                    <Maximize size={20} />
-                                </button>
-                                <button type="button" className="big-close-btn" onClick={() => {
-                                    setShowVideo(false);
-                                    setIsVideoPlaying(false);
-                                }}>
-                                    <X size={28} />
-                                </button>
-                            </div>
-                            <video
-                                ref={videoRef}
-                                src={activeVideo}
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                className="modal-video"
-                                onLoadStart={() => setIsBuffering(true)}
-                                onWaiting={() => setIsBuffering(true)}
-                                onCanPlay={() => setIsBuffering(false)}
-                                onPlaying={() => setIsBuffering(false)}
-                                onTimeUpdate={handleTimeUpdate}
-                                onClick={handlePlayPause}
-                                onContextMenu={(e) => e.preventDefault()}
-                                onVolumeChange={(e) => {
-                                    if (!e.target.muted) {
-                                        e.target.muted = true;
-                                    }
-                                }}
-                            />
-
-                            {isBuffering && (
-                                <div className="video-loader">
-                                    <img src="/assets/loading_animation_branded.gif" alt="Loading..." className="branded-spinner" />
-                                    <p>Loading Video...</p>
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.9, opacity: 0 }}
+                                className="video-modal-content"
+                                onClick={e => e.stopPropagation()}
+                            >
+                                <div className="modal-actions">
+                                    <button type="button" className="action-btn fullscreen-btn" onClick={toggleFullscreen}>
+                                        <Maximize size={20} />
+                                    </button>
+                                    <button type="button" className="big-close-btn" onClick={() => {
+                                        setShowVideo(false);
+                                        setIsVideoPlaying(false);
+                                    }}>
+                                        <X size={28} />
+                                    </button>
                                 </div>
-                            )}
+                                <video
+                                    ref={videoRef}
+                                    src={activeVideo}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="modal-video"
+                                    onLoadStart={() => setIsBuffering(true)}
+                                    onWaiting={() => setIsBuffering(true)}
+                                    onCanPlay={() => setIsBuffering(false)}
+                                    onPlaying={() => setIsBuffering(false)}
+                                    onTimeUpdate={handleTimeUpdate}
+                                    onClick={handlePlayPause}
+                                    onContextMenu={(e) => e.preventDefault()}
+                                    onVolumeChange={(e) => {
+                                        if (!e.target.muted) {
+                                            e.target.muted = true;
+                                        }
+                                    }}
+                                />
 
-                            <div className="custom-video-controls" onClick={e => e.stopPropagation()}>
-                                <button type="button" className="play-pause-btn" onClick={handlePlayPause}>
-                                    {isPlaying ? <X size={20} style={{ transform: 'rotate(45deg)' }} /> : <Play size={20} fill="currentColor" />}
-                                </button>
-                                <div className="video-progress-container">
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="100"
-                                        value={progress}
-                                        onChange={handleScrub}
-                                        className="video-progress-slider"
-                                    />
-                                    <div className="video-progress-bar" style={{ width: `${progress}%` }}></div>
+                                {isBuffering && (
+                                    <div className="video-loader">
+                                        <img src="/assets/loading_animation_branded.gif" alt="Loading..." className="branded-spinner" />
+                                        <p>Loading Video...</p>
+                                    </div>
+                                )}
+
+                                <div className="custom-video-controls" onClick={e => e.stopPropagation()}>
+                                    <button type="button" className="play-pause-btn" onClick={handlePlayPause}>
+                                        {isPlaying ? <X size={20} style={{ transform: 'rotate(45deg)' }} /> : <Play size={20} fill="currentColor" />}
+                                    </button>
+                                    <div className="video-progress-container">
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="100"
+                                            value={progress}
+                                            onChange={handleScrub}
+                                            className="video-progress-slider"
+                                        />
+                                        <div className="video-progress-bar" style={{ width: `${progress}%` }}></div>
+                                    </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </>
     );
 };

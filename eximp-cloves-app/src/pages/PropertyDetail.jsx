@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ChevronLeft, Calendar, Shield, Users, FileText, CheckCircle2, ChevronDown, ChevronUp, Search, Wifi, GraduationCap, Library, Box, ShoppingBag, Trophy, Circle, Database, MessageSquare, MessageCircle } from 'lucide-react';
@@ -401,6 +401,20 @@ const VideoGallery = ({ property }) => {
 
 const DetailFAQItem = ({ question, answer, forceOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const itemRef = useRef(null);
+
+    // Auto-scroll when opened
+    useEffect(() => {
+        if (isOpen && itemRef.current) {
+            const timer = setTimeout(() => {
+                itemRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
 
     // Sync with expand/collapse all
     useEffect(() => {
@@ -432,7 +446,11 @@ const DetailFAQItem = ({ question, answer, forceOpen }) => {
     };
 
     return (
-        <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+        <div
+            ref={itemRef}
+            className={`faq-item ${isOpen ? 'open' : ''}`}
+            onClick={() => setIsOpen(!isOpen)}
+        >
             <div className="faq-question">
                 <h4>{question}</h4>
                 {isOpen ? <ChevronUp size={20} color="var(--primary-color)" /> : <ChevronDown size={20} color="#64748b" />}

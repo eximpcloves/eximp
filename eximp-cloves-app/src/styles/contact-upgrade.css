@@ -529,3 +529,81 @@
     /* White text */
     padding: 10px;
 }
+
+/* ========================================
+   LIGHT THEME OVERRIDES
+   ======================================== */
+
+[data-theme="light"] .info-card {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.08);
+    box-shadow: 0 5px 15px rgba(15, 25, 35, 0.05);
+}
+
+[data-theme="light"] .info-card h3 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .info-card p {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .map-card {
+    background: #ffffff;
+}
+
+[data-theme="light"] .faq-search-input {
+    background: rgba(15, 25, 35, 0.04);
+    border-color: rgba(15, 25, 35, 0.15);
+    color: #0f1923;
+}
+
+[data-theme="light"] .faq-search-input::placeholder {
+    color: rgba(15, 25, 35, 0.4);
+}
+
+[data-theme="light"] .faq-search-input:focus {
+    background: rgba(15, 25, 35, 0.07);
+    border-color: var(--primary-color);
+}
+
+[data-theme="light"] .faq-item {
+    background: rgba(15, 25, 35, 0.03);
+    border-color: rgba(15, 25, 35, 0.08);
+}
+
+[data-theme="light"] .faq-item:hover {
+    background: rgba(15, 25, 35, 0.06);
+    border-color: rgba(244, 162, 97, 0.4);
+}
+
+[data-theme="light"] .faq-item.open {
+    background: rgba(15, 25, 35, 0.07);
+    border-color: var(--primary-color);
+}
+
+[data-theme="light"] .faq-question h4 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .faq-answer {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .form-group-react input,
+[data-theme="light"] .form-group-react select,
+[data-theme="light"] .form-group-react textarea {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.15);
+    color: #0f1923;
+}
+
+[data-theme="light"] .form-group-react input::placeholder,
+[data-theme="light"] .form-group-react textarea::placeholder {
+    color: rgba(15, 25, 35, 0.35);
+}
+
+[data-theme="light"] .form-group-react select option {
+    background-color: #ffffff;
+    color: #0f1923;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MessageSquare, Clock, ArrowRight, CheckCircle2, Phone, MapPin, Mail, ChevronDown, ChevronUp, Search } from 'lucide-react';
 import Reveal from '../components/Reveal';
@@ -19,8 +19,16 @@ const Contact = () => {
     const [faqSearch, setFaqSearch] = useState('');
     const [expandAll, setExpandAll] = useState(false);
 
-    // Google Web App URL (Connected)
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHC6cf32ayl70WQLeV-KlIwoCnj3HbzoznCjPX8BNz2J2eh2gkMowe7_dFHT6C-zvx5A/exec";
+    // Google Web App URL (Connected via Environment Variables)
+    const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            );
+    };
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -28,6 +36,17 @@ const Contact = () => {
 
         if (!formData.name || !formData.phone || !formData.email) {
             setStatus({ submitting: false, success: false, error: "Please fill in all required fields." });
+            return;
+        }
+
+        if (!validateEmail(formData.email)) {
+            setStatus({ submitting: false, success: false, error: "Please enter a valid email address." });
+            return;
+        }
+
+        if (!GOOGLE_SCRIPT_URL) {
+            console.error("Missing Google Script URL configuration.");
+            setStatus({ submitting: false, success: false, error: "Server configuration error. Please contact support." });
             return;
         }
 
@@ -90,7 +109,7 @@ const Contact = () => {
                         <div className="info-card">
                             <div className="icon-box"><MapPin size={24} /></div>
                             <h3>Head Office</h3>
-                            <p>16 Adeola Hopewell St, Victoria Island,<br />Lagos 106104, Lagos, Nigeria</p>
+                            <p>57B, Isaac John street, Yaba,<br />Lagos, Nigeria</p>
                             {/* <p style={{ marginTop: '0.5rem', color: 'var(--text-muted)' }}><strong>Abuja Branch:</strong> Prime Park Office, Garki Area.</p> */}
                         </div>
                     </Reveal>
@@ -281,7 +300,7 @@ const Contact = () => {
                                 <h3>Visit Our Office</h3>
                                 <div className="map-frame">
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.717646101234!2d3.4292724!3d6.4333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53ca2673d3b%3A0xe10438ec30164627!2s16+Adeola+Hopewell+St%2C+Victoria+Island%2C+Lagos+106104!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9679087195773!2d3.3723568!3d6.5257369999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8dacc29f4ead%3A0xb46408f2372b476a!2s57b%20Isaac%20John%20St%2C%20Fadeyi%2C%20Lagos%20102216%2C%20Lagos!5e0!3m2!1sen!2sng!4v1772221769833!5m2!1sen!2sng"
                                         width="100%"
                                         height="200"
                                         style={{ border: 0 }}
@@ -407,6 +426,20 @@ const Contact = () => {
 
 const FAQItem = ({ question, answer, forceOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const itemRef = useRef(null);
+
+    // Auto-scroll when opened
+    useEffect(() => {
+        if (isOpen && itemRef.current) {
+            const timer = setTimeout(() => {
+                itemRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
 
     // Sync with expand/collapse all
     useEffect(() => {
@@ -438,7 +471,11 @@ const FAQItem = ({ question, answer, forceOpen }) => {
     };
 
     return (
-        <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+        <div
+            ref={itemRef}
+            className={`faq-item ${isOpen ? 'open' : ''}`}
+            onClick={() => setIsOpen(!isOpen)}
+        >
             <div className="faq-question">
                 <h4>{question}</h4>
                 {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}

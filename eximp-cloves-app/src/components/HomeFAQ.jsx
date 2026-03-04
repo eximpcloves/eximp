@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const faqData = [
@@ -19,9 +19,27 @@ const faqData = [
 
 const FAQItem = ({ question, answer, defaultOpen = false }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+    const itemRef = useRef(null);
+
+    useEffect(() => {
+        if (isOpen && itemRef.current) {
+            // Wait slightly for the animation to start so we have accurate dimensions
+            const timer = setTimeout(() => {
+                itemRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
 
     return (
-        <div className={`home-faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(o => !o)}>
+        <div
+            ref={itemRef}
+            className={`home-faq-item ${isOpen ? 'open' : ''}`}
+            onClick={() => setIsOpen(o => !o)}
+        >
             <div className="home-faq-question">
                 <h4>{question}</h4>
                 <span className="home-faq-icon">{isOpen ? '−' : '+'}</span>

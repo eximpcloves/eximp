@@ -115,10 +115,11 @@
 /* Detail Navigation (Back) */
 .detail-nav {
     position: fixed;
-    top: 8.75rem;
-    /* 140px -> 8.75rem */
+    top: 10rem;
+    /* Increased from 8.75rem to avoid navbar overlap */
     left: 2.5rem;
-    z-index: 100;
+    z-index: 1100;
+    /* Ensure it stays above hero but below potential mobile overlays */
 }
 
 .back-link {
@@ -127,14 +128,16 @@
     gap: 0.5rem;
     color: white;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 0.75rem 1.5rem;
     border-radius: 3.125rem;
     /* 50px -> 3.125rem */
     font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .back-link:hover {
@@ -750,8 +753,8 @@
     }
 
     .detail-nav {
-        top: 6.25rem;
-        /* 100px -> 6.25rem */
+        top: 8rem;
+        /* Increased from 6.25rem to move below navbar/marquee */
         left: 1rem;
     }
 
@@ -764,4 +767,233 @@
     .overview-card h2 {
         font-size: 1.6rem;
     }
+}
+
+/* ========================================
+   LIGHT THEME OVERRIDES
+   ======================================== */
+
+[data-theme="light"] .property-detail-page {
+    background: #f2f4f7;
+    color: #0f1923;
+}
+
+[data-theme="light"] .overview-card {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.08);
+}
+
+[data-theme="light"] .overview-card h2 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .overview-card p {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .key-features-box {
+    background: rgba(15, 25, 35, 0.04);
+    border-color: rgba(15, 25, 35, 0.1);
+}
+
+[data-theme="light"] .key-features-box h3 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .key-features-box p {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .feature-tag {
+    background: rgba(238, 161, 87, 0.06);
+    border-color: rgba(238, 161, 87, 0.15);
+    color: #0f1923;
+}
+
+[data-theme="light"] .landmark-card-modern h3 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .landmark-item-modern {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.06);
+    color: #3d4f63;
+}
+
+[data-theme="light"] .amenity-card {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.06);
+    box-shadow: 0 4px 12px rgba(15, 25, 35, 0.04);
+}
+
+[data-theme="light"] .amenity-card:hover {
+    background: #f8f9fb;
+    border-color: rgba(238, 161, 87, 0.3);
+}
+
+[data-theme="light"] .amenity-card h3 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .amenity-card p {
+    color: #6b7f96;
+}
+
+[data-theme="light"] .amenities-section h2,
+[data-theme="light"] .payment-header-modern h2 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .payment-plans-modern {
+    border-top-color: rgba(15, 25, 35, 0.1);
+}
+
+[data-theme="light"] .payment-sub-info p {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .size-card {
+    background: #ffffff;
+    border-color: rgba(15, 25, 35, 0.06);
+}
+
+[data-theme="light"] .size-card:hover {
+    background: #f8f9fb;
+}
+
+[data-theme="light"] .size-header span {
+    color: #6b7f96;
+}
+
+[data-theme="light"] .size-pricing {
+    border-bottom-color: rgba(15, 25, 35, 0.08);
+}
+
+[data-theme="light"] .new-price {
+    color: #0f1923;
+}
+
+[data-theme="light"] .stat-item span {
+    color: rgba(15, 25, 35, 0.5);
+}
+
+[data-theme="light"] .stat-item strong {
+    color: #0f1923;
+}
+
+[data-theme="light"] .cta-card-modern {
+    background: rgba(15, 25, 35, 0.03);
+    border-color: rgba(15, 25, 35, 0.08);
+}
+
+[data-theme="light"] .cta-card-modern h2 {
+    color: #0f1923;
+}
+
+[data-theme="light"] .cta-card-modern p {
+    color: #3d4f63;
+}
+
+[data-theme="light"] .cta-secondary-btn {
+    background: rgba(15, 25, 35, 0.05);
+    color: #0f1923;
+    border-color: rgba(15, 25, 35, 0.15);
+}
+
+[data-theme="light"] .cta-secondary-btn:hover {
+    background: rgba(15, 25, 35, 0.1);
+    border-color: rgba(15, 25, 35, 0.3);
+}
+
+[data-theme="light"] .detail-faq {
+    background: #e8ebf0;
+    border-color: rgba(15, 25, 35, 0.08);
+}
+
+[data-theme="light"] .back-link {
+    color: #000;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-weight: 600;
+}
+
+[data-theme="light"] .video-tab {
+    background: rgba(15, 25, 35, 0.03);
+    border-color: rgba(15, 25, 35, 0.1);
+    color: #3d4f63;
+}
+
+[data-theme="light"] .video-subtitle {
+    color: #6b7f96;
+}
+
+/* Property Detail Hero Visibility in Light Mode */
+[data-theme="light"] .detail-hero .hero-content h1 {
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Glass effect for hero content to improve legibility as requested */
+[data-theme="light"] .detail-hero .hero-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    width: fit-content;
+}
+
+[data-theme="light"] .detail-hero .hero-location {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Info Box/Pricing Card in Property Detail */
+[data-theme="light"] .price-and-info-hero,
+[data-theme="light"] .pricing-card-modern,
+[data-theme="light"] .property-info-box {
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 25, 35, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .price-and-info-hero *,
+[data-theme="light"] .pricing-card-modern *,
+[data-theme="light"] .property-info-box * {
+    color: #0f1923 !important;
+    text-shadow: none !important;
+}
+
+/* Enhanced Video Gallery Tabs Visibility */
+[data-theme="light"] .video-tab.active {
+    background: #EEA157 !important;
+    color: #000 !important;
+    border-color: #EEA157 !important;
+    box-shadow: 0 4px 15px rgba(238, 161, 87, 0.4);
+    transform: translateY(-2px);
+    font-weight: 700;
+}
+
+[data-theme="light"] .video-tab:not(.active) {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #4a5568 !important;
+    border: 1px solid rgba(15, 25, 35, 0.1) !important;
+    opacity: 0.8;
+}
+
+[data-theme="light"] .video-tab:not(.active):hover {
+    background: #f8f9fb !important;
+    opacity: 1;
+}
+
+/* Navbar visibility protection in Property Detail (Light Mode) */
+[data-theme="light"] .navbar.is-property-detail:not(.scrolled) {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

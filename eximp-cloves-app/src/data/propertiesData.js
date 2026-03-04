@@ -125,11 +125,6 @@ export const propertiesData = {
             "Agbowa-Ikorodu Road",
             "Lagos-Ogun Buffer Zone"
         ],
-        paymentPlans: [
-            { name: "3 Months (3% Interest)", total: "₦3,675,000", deposit: "₦1,000,000", monthly: "₦891,667" },
-            { name: "6 Months (5% Interest)", total: "₦4,025,000", deposit: "₦500,000", monthly: "₦587,500" },
-            { name: "12 Months (10% Interest)", total: "₦4,200,000", deposit: "₦250,000", monthly: "₦329,167" }
-        ],
         faq: []
     }
 };

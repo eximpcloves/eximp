@@ -536,7 +536,7 @@ const Terms = () => {
                             <div className="contact-legal">
                                 <p>For any questions regarding these terms, please contact us at:</p>
                                 <p><strong>Email:</strong> legal@eximpclove.com</p>
-                                <p><strong>Address:</strong> 16 Adeola Hopewell St, Victoria Island, Lagos, Nigeria</p>
+                                <p><strong>Address:</strong> 57B, Isaac John street, Yaba, Lagos, Nigeria</p>
                             </div>
                         </div>
                     </Reveal>
