@@ -83,7 +83,7 @@ const Careers = () => {
         {
             id: 'sales-manager',
             title: 'Sales Manager',
-            type: 'Hybrid',
+            type: 'On-site/hybrid',
             location: 'Lagos, Nigeria',
             salary: '₦200k - ₦450k + Comm.', // Adjusted based on Sales Associate (100-250) and Business Manager (300-600)
             about: 'Lead, mentor, and scale our sales force to dominate the Nigerian real estate investment market while driving high-value enterprise relationships.',
@@ -103,7 +103,7 @@ const Careers = () => {
         {
             id: 'sales-associate',
             title: 'Sales Associate',
-            type: 'Hybrid',
+            type: 'On-site/hybrid',
             location: 'Lagos, Nigeria',
             salary: '₦100k - ₦250k + Comm.',
             about: 'Proactively generate leads and support potential buyers in finding their perfect property investment through high-energy outreach and tours.',
@@ -123,7 +123,7 @@ const Careers = () => {
         {
             id: 'business-manager',
             title: 'Business Manager',
-            type: 'On-site',
+            type: 'On-site/hybrid',
             location: 'Lagos, Nigeria',
             salary: '₦300k - ₦600k',
             about: 'Oversee strategic business units and drive organizational efficiency to ensure sustainable growth and operational excellence.',
@@ -143,7 +143,7 @@ const Careers = () => {
         {
             id: 'customer-support',
             title: 'Customer Support',
-            type: 'Hybrid',
+            type: 'On-site',
             location: 'Lagos, Nigeria',
             salary: '₦80k - ₦150k',
             about: 'Ensure our clients receive world-class service throughout their investment journey, from onboarding to post-sales care.',
@@ -163,7 +163,7 @@ const Careers = () => {
         {
             id: 'content-creator',
             title: 'Content Creator',
-            type: 'Hybrid',
+            type: 'On-site/hybrid',
             location: 'Lagos, Nigeria',
             salary: '₦120k - ₦250k',
             about: 'Tell the Eximp & Cloves story through compelling visuals and narratives that resonate with global and local investors.',
@@ -183,7 +183,7 @@ const Careers = () => {
         {
             id: 'hr-generalist',
             title: 'HR Generalist',
-            type: 'On-site',
+            type: 'On-site/hybrid',
             location: 'Lagos, Nigeria',
             salary: '₦150k - ₦300k',
             about: 'Build and nurture a high-performing culture through strategic talent management, employee relations, and policy enforcement.',
@@ -198,6 +198,27 @@ const Careers = () => {
                 'Solid knowledge of Nigerian Labor Law and modern HR best practices.',
                 'Degree in HR Management, Industrial Relations, or a related field.',
                 'High level of integrity and exceptional interpersonal management skills.'
+            ]
+        },
+        {
+            id: 'graduate-trainee',
+            title: 'Graduate Trainee (Sales)',
+            type: 'Hybrid',
+            location: 'Lagos (Mainland), Nigeria',
+            salary: '₦30k - ₦40k Stipend + Comm.',
+            about: 'A 3-week intensive sales training program for ambitious graduates. Prove your sales ability and earn a permanent position in our high-growth team.',
+            tasks: [
+                'Attend mandatory in-office training and strategy sessions twice weekly.',
+                'Proactively generate sales leads and close property deals under mentorship.',
+                'Participate in high-energy field activities and property tours.',
+                'Maintain daily activity logs and report progress to the Sales Manager.'
+            ],
+            requirements: [
+                'Eligibility: NYSC graduate from 2024 to date, or currently serving/in NYSC camp (Must not be earlier than 2024 graduation).',
+                'Recent graduate with a strong passion for real estate and sales.',
+                'Resident of Lagos Mainland (required for proximity to Yaba office).',
+                'High level of resilience, self-motivation, and target-driven mindset.',
+                'Excellent communication and persuasive storytelling skills.'
             ]
         }
     ];

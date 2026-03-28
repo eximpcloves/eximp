@@ -125,7 +125,7 @@ const Contact = () => {
                         <div className="info-card">
                             <div className="icon-box"><Mail size={24} /></div>
                             <h3>Email Us</h3>
-                            <p>eximpcloves@gmail.com</p>
+                            <p>admin@eximps-cloves.com</p>
                             {/* <p>support@eximpcloves.com</p> */}
                         </div>
                     </Reveal>

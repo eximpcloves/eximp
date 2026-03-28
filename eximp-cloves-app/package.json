@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "sync-version": "node scripts/sync-version.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "predev": "npm run sync-version",
     "dev": "vite",
-    "prebuild": "npm run sync-version",
+    "prebuild": "npm run sync-version && npm run generate-sitemap",
     "build": "vite build",
     "preview": "vite preview"
   },

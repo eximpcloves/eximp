@@ -101,6 +101,29 @@ const PropertyDetail = () => {
                         </div>
                     </Reveal>
 
+                    {/* Map Section */}
+                    {property.mapEmbedUrl && (
+                        <Reveal delay={0.15}>
+                            <div className="landmark-card-modern" style={{ marginBottom: '2rem' }}>
+                                <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <MapPin size={24} color="#EEA157" /> Estate Location Map
+                                </h3>
+                                <div className="map-container" style={{ borderRadius: '12px', overflow: 'hidden', height: '350px', border: '1px solid var(--border-color)' }}>
+                                    <iframe
+                                        src={property.mapEmbedUrl}
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title={`${property.title} Location`}
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </Reveal>
+                    )}
+
                     {/* Landmarks Section (Now Full Width or Grid) */}
                     {property.landmarks && property.landmarks.length > 0 && (
                         <Reveal delay={0.2}>
@@ -150,7 +173,7 @@ const PropertyDetail = () => {
                     <section className="payment-plans-modern">
                         <Reveal>
                             <div className="payment-header-modern">
-                                <h2>Payment Plan</h2>
+                                <h2>Available Plots & Pricing</h2>
                                 {property.paymentPlanHeader && (
                                     <div className="payment-sub-info">
                                         <p>Initial Deposit: <strong>{property.paymentPlanHeader.deposit}</strong></p>
@@ -163,30 +186,11 @@ const PropertyDetail = () => {
                                 {property.sizePaymentPlans.map((plan, idx) => (
                                     <div key={idx} className="size-card">
                                         <div className="size-header">
-                                            <h3>{plan.size}</h3>
-                                            <span>{plan.sqm}</span>
+                                            <h3>{plan.sqm}</h3>
                                         </div>
-                                        <div className="size-pricing">
-                                            <div className="old-price">{plan.oldPrice}</div>
-                                            <div className="new-price">{plan.newPrice}</div>
-                                        </div>
-                                        <div className="size-stats">
-                                            <div className="stat-item">
-                                                <span>Discount</span>
-                                                <strong>{plan.discount}</strong>
-                                            </div>
-                                            <div className="stat-item">
-                                                <span>Balance</span>
-                                                <strong>{plan.balance}</strong>
-                                            </div>
-                                            <div className="stat-item">
-                                                <span>4 Mo. Plan</span>
-                                                <strong>{plan.monthly4}</strong>
-                                            </div>
-                                            <div className="stat-item">
-                                                <span>6 Mo. Plan</span>
-                                                <strong>{plan.monthly6}</strong>
-                                            </div>
+                                        <div className="size-pricing-simple">
+                                            <div className="main-price">{plan.price}</div>
+                                            <div className="price-label">Fixed Price</div>
                                         </div>
                                     </div>
                                 ))}

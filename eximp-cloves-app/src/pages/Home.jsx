@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
 import Reveal from '../components/Reveal';
@@ -6,18 +6,41 @@ import { propertiesArray } from '../data/propertiesData';
 import Services from '../components/Services';
 import Testimonials from '../components/Testimonials';
 import HomeFAQ from '../components/HomeFAQ';
+import WebinarSection from '../components/WebinarSection';
 
 const Home = () => {
-    const [activeFilter, setActiveFilter] = useState('Lagos');
+    const [currentBg, setCurrentBg] = useState(0);
 
-    // Filter properties based on state
-    const filteredProperties = propertiesArray.filter(p => p.state === activeFilter);
+    const backgrounds = [
+        '/home_background.png',
+        '/assets/prop 1.jpg',
+        '/assets/prop 2.jpg',
+        '/assets/prop 3.jpg',
+        '/assets/prop 4.jpg'
+    ];
 
-    const locations = ['Lagos', 'Ogun', 'Abuja'];
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentBg((prev) => (prev + 1) % backgrounds.length);
+        }, 4000); // 4 seconds for a smoother feel
+        return () => clearInterval(interval);
+    }, [backgrounds.length]);
+
 
     return (
         <div className="home-page">
-            <section className="hero" style={{ backgroundImage: "url('/home_background.png')" }}>
+            <section className="hero">
+                <div className="hero-background-container">
+                    {backgrounds.map((bg, index) => (
+                        <div
+                            key={index}
+                            className={`hero-bg-layer ${currentBg === index ? 'active' : ''}`}
+                        >
+                            <div className="hero-bg-blur" style={{ backgroundImage: `url('${bg}')` }} />
+                            <div className="hero-bg-main" style={{ backgroundImage: `url('${bg}')` }} />
+                        </div>
+                    ))}
+                </div>
                 <div className="container">
                     <div className="hero-grid">
                         <Reveal className="hero-text-reveal">
@@ -108,25 +131,14 @@ const Home = () => {
                         <div className="section-header featured-header">
                             <div className="header-text">
                                 <h2>Featured Land Properties in Nigeria</h2>
-                                <p>Check out our best service you can possibly orders in building your company and don't forget to ask via our email or our customer service if you are interested in using our services</p>
-                            </div>
-                            <div className="filter-group">
-                                {locations.map(loc => (
-                                    <button
-                                        key={loc}
-                                        className={`filter-btn ${activeFilter === loc ? 'active' : ''}`}
-                                        onClick={() => setActiveFilter(loc)}
-                                    >
-                                        {loc}
-                                    </button>
-                                ))}
+                                <p>Explore our top-tier property developments across strategic locations in Nigeria. Secure your future with verified titles and premium land banking opportunities.</p>
                             </div>
                         </div>
                     </Reveal>
 
                     <div className="properties-carousel-wrapper">
                         <div className="properties-grid">
-                            {filteredProperties.map((p, idx) => (
+                            {propertiesArray.slice().reverse().slice(0, 4).map((p, idx) => (
                                 <Reveal key={p.id || idx} delay={idx * 0.1}>
                                     <PropertyCard {...p} />
                                 </Reveal>
@@ -138,6 +150,7 @@ const Home = () => {
 
             <Services />
             <Testimonials />
+            <WebinarSection />
             <HomeFAQ />
         </div>
     );

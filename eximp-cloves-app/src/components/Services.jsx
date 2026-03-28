@@ -4,21 +4,21 @@ import Reveal from './Reveal';
 const servicesData = [
     {
         id: 'land-banking',
-        title: 'Land Banking Investment',
-        description: 'Taking you from empty plot to move-in-ready property, at Eximp & Cloves, we transform raw land into affordable homes for sale in Nigeria with flexible payment options. Our residential communities are designed with care to bring you the perfect balance of comfort, ease, and modern living.',
-        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+        title: 'Land Purchase & Banking',
+        description: 'Secure your future with prime Nigerian real estate. We specialize in strategic land acquisition, providing verified titles and high-appreciation potential for both individual investors and corporate land banking portfolios.',
+        image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200'
     },
     {
-        id: 'property-dev',
-        title: 'Exquisite Property Development',
-        description: 'We specialize in high-end residential and commercial developments that push the boundaries of design and functionality. From conceptualization to final finishing, our team ensures every detail reflects excellence and durability.',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+        id: 'construction',
+        title: 'Building & Construction',
+        description: 'From foundation to finishing, we bring architectural visions to life. Our construction team delivers high-quality residential communities and commercial spaces, ensuring structural integrity, modern aesthetics, and timely delivery.',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1600'
     },
     {
-        id: 'doc-support',
-        title: 'Documentation Support Services',
-        description: 'Navigating land titles and government approvals in Nigeria can be complex. We provide comprehensive documentation support, ensuring your investments are legally secure and fully compliant with state regulations.',
-        image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+        id: 'management',
+        title: 'Project & Property Management',
+        description: 'Maximize the value of your assets with expert oversight. We handle everything from large-scale project coordination to facility management, ensuring your properties remain in peak condition and yield optimum returns.',
+        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200'
     }
 ];
 

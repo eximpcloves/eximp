@@ -455,7 +455,7 @@ const Privacy = () => {
 
                             <div className="contact-legal">
                                 <p>For any questions regarding this policy, please contact us at:</p>
-                                <p><strong>Email:</strong> legal@eximpclove.com</p>
+                                <p><strong>Email:</strong> legal@eximps-cloves.com</p>
                                 <p><strong>Address:</strong> 57B, Isaac John street, Yaba, Lagos, Nigeria</p>
                             </div>
                         </div>

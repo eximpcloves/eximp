@@ -526,7 +526,7 @@ const Terms = () => {
                                 <ul>
                                     <li>
                                         (a) If you have any questions or comments about these Terms of Service, please
-                                        contact us at legal@eximpclove.com or through the contact form on our
+                                        contact us at legal@eximps-cloves.com or through the contact form on our
                                         website. The Company is under no obligation to respond to enquiries within
                                         any specified timeframe.
                                     </li>
@@ -535,7 +535,7 @@ const Terms = () => {
 
                             <div className="contact-legal">
                                 <p>For any questions regarding these terms, please contact us at:</p>
-                                <p><strong>Email:</strong> legal@eximpclove.com</p>
+                                <p><strong>Email:</strong> legal@eximps-cloves.com</p>
                                 <p><strong>Address:</strong> 57B, Isaac John street, Yaba, Lagos, Nigeria</p>
                             </div>
                         </div>
