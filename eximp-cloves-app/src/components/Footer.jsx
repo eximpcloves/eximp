@@ -90,6 +90,7 @@ const Footer = () => {
                             <ul>
                                 <li><Link to="/services">Services</Link></li>
                                 <li><Link to="/terms">License</Link></li>
+                                <li><Link to="/refund">Refund Policy</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -102,6 +103,7 @@ const Footer = () => {
                         <Link to="/privacy">Cookies Policy</Link>
                         <Link to="/privacy">Privacy Policy</Link>
                         <Link to="/terms">Terms of Service</Link>
+                        <Link to="/refund">Refund Policy</Link>
                     </div>
                 </div>
             </div>
