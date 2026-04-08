@@ -15,6 +15,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Refund from './pages/Refund';
 import VersionCheck from './components/VersionCheck';
+import FloatingSupport from './components/FloatingSupport';
 import './styles/updates.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <VideoProvider>
                 <VersionCheck />
                 <Router>
+                    <FloatingSupport />
                     <ScrollToTop />
                     <Layout>
                         <Routes>
