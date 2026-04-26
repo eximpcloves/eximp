@@ -211,9 +211,10 @@ export const propertiesData = {
         location: "Mokoloki, Ofada - Mowe",
         state: "Ogun",
         price: "₦500,000",
-        status: "Festive Offer",
+        status: "Ended",
         tags: ["300 SQM", "Outright: ₦500K", "Installment: ₦650K", "Limited Time"],
         image: "/assets/eid_easter_sales.jpg",
+        mapEmbedUrl: "https://maps.google.com/maps?q=Mokoloki,+Ofada,+Ogun&hl=en&z=14&output=embed",
         description: "Celebrate this festive season with an exclusive opportunity to own land in the fast-developing Mokoloki area of Ofada-Mowe. This special Eid/Easter offer provides prime 300SQM plots at heavily discounted rates for a limited time. Don't miss out on securing a piece of the future in this high-growth corridor.",
         paymentPlanHeader: {
             deposit: "₦150,000",
@@ -237,6 +238,41 @@ export const propertiesData = {
         faq: [
             { question: "How long is this special offer valid?", answer: "The Eid/Easter Special Land Sale starts on March 18th and ends on April 15th." },
             { question: "What are the payment options?", answer: "You can pay ₦500,000 outright or ₦650,000 via a 2-4 month installment plan." }
+        ]
+    },
+    "mokoloki-new-price": {
+        id: 7,
+        slug: "mokoloki-new-price",
+        title: "Mokoloki New Price Alert",
+        location: "Mokoloki, Ofada - Mowe",
+        state: "Ogun",
+        price: "From ₦900,000",
+        status: "Now Selling",
+        tags: ["300 SQM", "Outright: ₦900K", "Installment: ₦1.1M"],
+        image: "/assets/mokoloki_new_price_alert.jpg",
+        mapEmbedUrl: "https://maps.google.com/maps?q=Mokoloki,+Ofada,+Ogun&hl=en&z=14&output=embed",
+        description: "Secure your piece of the high-growth corridor in Mokoloki, Ofada-Mowe with our new pricing. Get prime 300SQM plots and build your future wealth with flexible payment options before the next price review.",
+        paymentPlanHeader: {
+            deposit: "₦150,000",
+            promo: "Secure yours before the next price review"
+        },
+        sizePaymentPlans: [
+            {
+                sqm: "300sqm (Outright)",
+                price: "₦900,000"
+            },
+            {
+                sqm: "300sqm (2-4 Months Installment)",
+                price: "₦1,100,000"
+            }
+        ],
+        landmarks: [
+            "Ofada Town",
+            "Mowe-Ibafo Junction",
+            "International Breweries"
+        ],
+        faq: [
+            { question: "What are the payment options?", answer: "You can pay ₦900,000 outright or ₦1.1 Million via a 2-4 month installment plan." }
         ]
     }
 };

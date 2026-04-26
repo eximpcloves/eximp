@@ -14,6 +14,7 @@ import Careers from './pages/Careers';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Refund from './pages/Refund';
+import Subscribe from './pages/Subscribe';
 import VersionCheck from './components/VersionCheck';
 import FloatingSupport from './components/FloatingSupport';
 import './styles/updates.css';
@@ -39,6 +40,7 @@ function App() {
                             <Route path="/privacy" element={<Privacy />} />
                             <Route path="/terms" element={<Terms />} />
                             <Route path="/refund" element={<Refund />} />
+                            <Route path="/subscribe" element={<Subscribe />} />
                         </Routes>
                     </Layout>
                 </Router>

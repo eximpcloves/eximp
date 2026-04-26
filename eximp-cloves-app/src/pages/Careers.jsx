@@ -23,9 +23,8 @@ const Careers = () => {
         fileData: '' // base64 string
     });
 
-    // We'll use the existing script URL if there's only one. If they create a new one, this handles both cases.
-    // Ensure you create the new script URL as an environment variable in production, e.g. VITE_CAREERS_SCRIPT_URL
-    const SCRIPT_URL = import.meta.env.VITE_CAREERS_SCRIPT_URL || import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+    // We'll submit to our backend API
+    const API_BASE = 'https://app.eximps-cloves.com/api/hr/recruitment';
 
     /*
     ### Detailed Job Descriptions
@@ -79,149 +78,35 @@ const Careers = () => {
 ![Careers Page Details](/images/careers-page-details.png)
 *Example of the expanded role details UI.*
 */
-    const openPositions = [
-        {
-            id: 'sales-manager',
-            title: 'Sales Manager',
-            type: 'On-site/hybrid',
-            location: 'Lagos, Nigeria',
-            salary: '₦200k - ₦450k + Comm.', // Adjusted based on Sales Associate (100-250) and Business Manager (300-600)
-            about: 'Lead, mentor, and scale our sales force to dominate the Nigerian real estate investment market while driving high-value enterprise relationships.',
-            tasks: [
-                'Develop and execute high-level sales strategies and monthly targets.',
-                'Hire, train, and mentor a high-performing team of Sales Associates.',
-                'Build institutional partnerships and handle high-value negotiations.',
-                'Analyze sales performance metrics and optimize the conversion funnel.'
-            ],
-            requirements: [
-                '5+ years of leadership experience in real estate or high-value asset sales.',
-                'Proven track record of meeting or exceeding aggressive revenue targets.',
-                'Strategic thinking with strong problem-solving and people management skills.',
-                'Executive-level communication and presentation abilities.'
-            ]
-        },
-        {
-            id: 'sales-associate',
-            title: 'Sales Associate',
-            type: 'On-site/hybrid',
-            location: 'Lagos, Nigeria',
-            salary: '₦100k - ₦250k + Comm.',
-            about: 'Proactively generate leads and support potential buyers in finding their perfect property investment through high-energy outreach and tours.',
-            tasks: [
-                'Conduct cold calling and rigorous follow-ups on property leads.',
-                'Organize and lead property site tours for prospective clients.',
-                'Support senior leadership in closing transactions and documentation.',
-                'Maintain an accurate lead database and activity log in the CRM.'
-            ],
-            requirements: [
-                'Highly motivated with a hunger for success in a commission-driven environment.',
-                'Excellent interpersonal skills and ability to build rapport with diverse clients.',
-                'Ability to work in the field and conduct site visitations across Lagos/Ogun.',
-                'Basic understanding of the real estate landscape in Nigeria.'
-            ]
-        },
-        {
-            id: 'business-manager',
-            title: 'Business Manager',
-            type: 'On-site/hybrid',
-            location: 'Lagos, Nigeria',
-            salary: '₦300k - ₦600k',
-            about: 'Oversee strategic business units and drive organizational efficiency to ensure sustainable growth and operational excellence.',
-            tasks: [
-                'Monitor P&L and operational efficiency across various company units.',
-                'Identify and evaluate new business growth and expansion opportunities.',
-                'Oversee partnership development and institutional stakeholder relations.',
-                'Implement organizational policies and continuous process improvements.'
-            ],
-            requirements: [
-                'Degree in Business Administration, Finance, or a related field.',
-                '5+ years of management experience in a fast-paced corporate setting.',
-                'Strong financial literacy and strategic planning capabilities.',
-                'Exceptional leadership, negotiation, and decision-making abilities.'
-            ]
-        },
-        {
-            id: 'customer-support',
-            title: 'Customer Support',
-            type: 'On-site',
-            location: 'Lagos, Nigeria',
-            salary: '₦80k - ₦150k',
-            about: 'Ensure our clients receive world-class service throughout their investment journey, from onboarding to post-sales care.',
-            tasks: [
-                'Manage post-sales client onboarding and detailed documentation support.',
-                'Resolve client queries and issues with high empathy and efficiency.',
-                'Maintain a robust CRM database for client feedback and satisfaction.',
-                'Coordinate with the sales team to ensure a seamless client experience.'
-            ],
-            requirements: [
-                'Empathy-driven with strong emotional intelligence and patience.',
-                'Problem-solving mindset with meticulous attention to detail.',
-                'Experience in customer success, hospitality, or professional client relations.',
-                'Fluent in English with professional written and verbal communication.'
-            ]
-        },
-        {
-            id: 'content-creator',
-            title: 'Content Creator',
-            type: 'On-site/hybrid',
-            location: 'Lagos, Nigeria',
-            salary: '₦120k - ₦250k',
-            about: 'Tell the Eximp & Cloves story through compelling visuals and narratives that resonate with global and local investors.',
-            tasks: [
-                'Produce high-quality video content (property tours, interviews, explainers).',
-                'Create engaging social media graphics and brand-consistent visuals.',
-                'Write blog articles and property descriptions that drive conversions.',
-                'Manage content calendars across all official brand platforms.'
-            ],
-            requirements: [
-                'Strong portfolio showcasing creative video editing or graphic design work.',
-                'Proficiency in Adobe Creative Suite (Premiere, Photoshop) or Canva Pro.',
-                'Deep understanding of social media trends and digital storytelling.',
-                'Creative thinking and the ability to work independently on tight deadlines.'
-            ]
-        },
-        {
-            id: 'hr-generalist',
-            title: 'HR Generalist',
-            type: 'On-site/hybrid',
-            location: 'Lagos, Nigeria',
-            salary: '₦150k - ₦300k',
-            about: 'Build and nurture a high-performing culture through strategic talent management, employee relations, and policy enforcement.',
-            tasks: [
-                'Manage the full recruitment lifecycle for all technical and sales roles.',
-                'Administer payroll, benefits, and statutory regulatory compliance.',
-                'Implement employee engagement and performance management systems.',
-                'Oversee workplace policies, culture initiatives, and conflict resolution.'
-            ],
-            requirements: [
-                '3+ years of experience as an HR Generalist or Talent Acquisition Specialist.',
-                'Solid knowledge of Nigerian Labor Law and modern HR best practices.',
-                'Degree in HR Management, Industrial Relations, or a related field.',
-                'High level of integrity and exceptional interpersonal management skills.'
-            ]
-        },
-        {
-            id: 'graduate-trainee',
-            title: 'Graduate Trainee (Sales)',
-            type: 'Hybrid',
-            location: 'Lagos (Mainland), Nigeria',
-            salary: '₦30k - ₦40k Stipend + Comm.',
-            about: 'A 3-week intensive sales training program for ambitious graduates. Prove your sales ability and earn a permanent position in our high-growth team.',
-            tasks: [
-                'Attend mandatory in-office training and strategy sessions twice weekly.',
-                'Proactively generate sales leads and close property deals under mentorship.',
-                'Participate in high-energy field activities and property tours.',
-                'Maintain daily activity logs and report progress to the Sales Manager.'
-            ],
-            requirements: [
-                'Eligibility: NYSC graduate from 2024 to date, or currently serving/in NYSC camp (Must not be earlier than 2024 graduation).',
-                'Recent graduate with a strong passion for real estate and sales.',
-                'Resident of Lagos Mainland (required for proximity to Yaba office).',
-                'High level of resilience, self-motivation, and target-driven mindset.',
-                'Excellent communication and persuasive storytelling skills.'
-            ]
-        }
-    ];
+    const [openPositions, setOpenPositions] = useState([]);
+    const [loadingJobs, setLoadingJobs] = useState(true);
+
+    React.useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/jobs`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const formatted = data.filter(j => j.status === 'Open' || j.status === 'Approved').map(j => ({
+                        id: j.id,
+                        title: j.title,
+                        type: j.employment_type || 'Full-time',
+                        location: j.location || 'Lagos, Nigeria',
+                        salary: j.salary_range || 'Competitive',
+                        about: j.description || 'Join our dynamic team and make an impact.',
+                        tasks: j.responsibilities ? j.responsibilities.split('\n').filter(t => t.trim() !== '') : (j.description ? j.description.split('\n').filter(t => t.trim() !== '') : ['Execute daily tasks related to the role.', 'Collaborate with cross-functional teams.']),
+                        requirements: j.requirements ? j.requirements.split('\n').filter(t => t.trim() !== '') : ['Relevant experience.', 'Strong communication skills.']
+                    }));
+                    setOpenPositions(formatted);
+                }
+            } catch (e) {
+                console.error("Failed to fetch jobs:", e);
+            } finally {
+                setLoadingJobs(false);
+            }
+        };
+        fetchJobs();
+    }, []);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -271,27 +156,31 @@ const Careers = () => {
             return;
         }
 
-        if (!SCRIPT_URL) {
-            console.error("Missing Google Script URL configuration.");
-            setStatus({ submitting: false, success: false, error: "Server configuration error. Please contact support." });
-            return;
-        }
-
         try {
-            // Send as JSON since Apps Script doPost will parse JSON payload
-            const res = await fetch(SCRIPT_URL, {
+            const jobMatch = openPositions.find(p => p.title === formData.role);
+            const payload = {
+                job_id: jobMatch ? jobMatch.id : null,
+                candidate_name: formData.name,
+                candidate_email: formData.email,
+                candidate_phone: formData.phone,
+                resume_url: formData.fileData ? `data:${formData.mimeType};base64,${formData.fileData}` : (formData.portfolio || ''),
+                cover_letter: formData.message,
+                status: 'Applied'
+            };
+
+            const res = await fetch(`${API_BASE}/applications`, {
                 method: 'POST',
-                // no-cors is standard for App Scripts, but we won't get a proper JSON response back. 
-                // We'll rely on the status being ok (which opaque responses don't give fully, but won't throw block).
-                mode: 'no-cors',
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(payload)
             });
 
-            setStatus({ submitting: false, success: true, error: null });
-
+            if (res.ok) {
+                setStatus({ submitting: false, success: true, error: null });
+            } else {
+                throw new Error("Failed response");
+            }
         } catch (error) {
             console.error("Form error:", error);
             setStatus({ submitting: false, success: false, error: "Something went wrong sending your application. Please try again." });
@@ -405,7 +294,16 @@ const Careers = () => {
                                             {status.error && <p className="error-text" style={{ color: '#ff4d4d', fontSize: '0.9rem', marginBottom: '1rem' }}>{status.error}</p>}
 
                                             <div className="role-grid">
-                                                {openPositions.map(pos => (
+                                                {loadingJobs ? (
+                                                    <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)" }}>
+                                                        Loading active job openings...
+                                                    </div>
+                                                ) : openPositions.length === 0 ? (
+                                                    <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)", backgroundColor: "#f9fafb", borderRadius: "12px" }}>
+                                                        <Briefcase size={32} style={{ marginBottom: "12px", opacity: 0.5 }} />
+                                                        <p>No open positions right now.</p>
+                                                    </div>
+                                                ) : openPositions.map(pos => (
                                                     <div
                                                         key={pos.id}
                                                         className={`role-item ${formData.role === pos.title ? 'active-selection' : ''} ${expandedRoleId === pos.id ? 'is-expanded' : ''}`}

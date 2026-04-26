@@ -11,12 +11,12 @@ const FloatingSupport = () => {
         category: 'general'
     });
 
-    const BACKEND_URL = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:8000';
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_API_URL || 'https://app.eximps-cloves.com';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
-        
+
         try {
             const response = await fetch(`${BACKEND_URL}/api/support/tickets`, {
                 method: 'POST',
@@ -151,21 +151,21 @@ const FloatingSupport = () => {
                     ) : (
                         <form onSubmit={handleSubmit}>
                             <label style={labelStyle}>Your Name</label>
-                            <input 
+                            <input
                                 style={inputStyle} type="text" required
-                                value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             />
 
                             <label style={labelStyle}>Email Address</label>
-                            <input 
+                            <input
                                 style={inputStyle} type="email" required
-                                value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
 
                             <label style={labelStyle}>Category</label>
-                            <select 
+                            <select
                                 style={inputStyle}
-                                value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})}
+                                value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             >
                                 <option value="general">General Inquiry</option>
                                 <option value="sales">Sales & Pricing</option>
@@ -174,21 +174,21 @@ const FloatingSupport = () => {
                             </select>
 
                             <label style={labelStyle}>Subject</label>
-                            <input 
+                            <input
                                 style={inputStyle} type="text" required
-                                value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                                value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                             />
 
                             <label style={labelStyle}>Details</label>
-                            <textarea 
+                            <textarea
                                 style={{ ...inputStyle, minHeight: '80px', resize: 'none' }} required
-                                value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})}
+                                value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                             ></textarea>
 
                             <button style={submitButtonStyle} type="submit" disabled={status === 'loading'}>
                                 {status === 'loading' ? 'Sending...' : 'Send Message'}
                             </button>
-                            
+
                             {status === 'error' && (
                                 <p style={{ color: '#e74c3c', fontSize: '12px', textAlign: 'center', marginTop: '10px' }}>
                                     Failed to send. Please try again.
