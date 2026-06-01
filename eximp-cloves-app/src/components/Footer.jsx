@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, Twitter, Linkedin, Send, Music2, ShieldAlert } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -14,24 +14,13 @@ const Footer = () => {
                     <div className="footer-newsletter-header">
                         <h2>Be the first to hear our news letters!</h2>
                     </div>
-                    <div className="footer-newsletter-content">
-                        <div className="footer-newsletter-embed">
-                            <iframe
-                                src="https://eximpcloves.substack.com/embed"
-                                width="100%"
-                                height="180"
-                                style={{
-                                    border: 'none',
-                                    background: '#ffffff',
-                                    filter: isDark ? 'invert(1) hue-rotate(180deg) brightness(0.9)' : 'none',
-                                    borderRadius: '8px'
-                                }}
-                                frameBorder="0"
-                                scrolling="no"
-                                title="Newsletter Subscribe"
-                            ></iframe>
+                        <div className="footer-newsletter-content">
+                            <div className="footer-newsletter-embed">
+                                {/* Lazy-load third-party embed to avoid third-party cookie issues until user consents */}
+                                {/** show a placeholder and require click to load the iframe **/}
+                                <NewsletterEmbed isDark={isDark} />
+                            </div>
                         </div>
-                    </div>
                 </div>
 
                 {/* Footer Main: Brand and Navigation Links */}
@@ -90,8 +79,9 @@ const Footer = () => {
                             <h4>More</h4>
                             <ul>
                                 <li><Link to="/services">Services</Link></li>
-                                <li><Link to="/terms">License</Link></li>
-                                <li><Link to="/refund">Refund Policy</Link></li>
+                                    <li><Link to="/terms">License</Link></li>
+                                    <li><Link to="/refund">Refund Policy</Link></li>
+                                    <li><Link to="/refund-request">Request a Refund</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -113,4 +103,33 @@ const Footer = () => {
 };
 
 export default Footer;
+
+function NewsletterEmbed({ isDark }) {
+    const [loaded, setLoaded] = useState(false);
+
+    if (!loaded) {
+        return (
+            <div style={{display:'flex',gap:8,alignItems:'center',justifyContent:'space-between',padding:'12px',borderRadius:8,background:isDark?"#0b1220":"#f8fafc"}}>
+                <div style={{flex:1}}>
+                    <strong>Newsletter preview</strong>
+                    <div style={{fontSize:13,color:isDark?"#cbd5e1":"#6b7280"}}>Load the Substack preview (third-party content).</div>
+                </div>
+                <div>
+                    <button className="btn" onClick={() => setLoaded(true)}>Load preview</button>
+                </div>
+            </div>
+        )
+    }
+
+    return (
+        <iframe
+            src="https://eximpcloves.substack.com/embed"
+            width="100%"
+            height="180"
+            loading="lazy"
+            style={{ border: 'none', background: '#ffffff', filter: isDark ? 'invert(1) hue-rotate(180deg) brightness(0.9)' : 'none', borderRadius: '8px' }}
+            title="Newsletter Subscribe"
+        />
+    )
+}
 

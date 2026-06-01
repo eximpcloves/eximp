@@ -84,7 +84,7 @@ const Careers = () => {
     React.useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await fetch(`${API_BASE}/jobs`);
+                const res = await fetch(`${API_BASE}/jobs?is_internal=false`);
                 if (res.ok) {
                     const data = await res.json();
                     const formatted = data.filter(j => j.status === 'Open' || j.status === 'Approved').map(j => ({
