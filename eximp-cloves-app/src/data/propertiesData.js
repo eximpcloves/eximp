@@ -246,10 +246,10 @@ export const propertiesData = {
         title: "Mokoloki New Price Alert",
         location: "Mokoloki, Ofada - Mowe",
         state: "Ogun",
-        price: "From ₦900,000",
+        price: "From ₦1,500,000",
         status: "Now Selling",
-        tags: ["300 SQM", "Outright: ₦900K", "Installment: ₦1.1M"],
-        image: "/assets/mokoloki_new_price_alert.jpg",
+        tags: ["300 SQM", "Outright: ₦1.5M", "Installment: ₦1.8M"],
+        image: "/assets/NPU_Ofada_Mowe_.jpg",
         mapEmbedUrl: "https://maps.google.com/maps?q=Mokoloki,+Ofada,+Ogun&hl=en&z=14&output=embed",
         description: "Secure your piece of the high-growth corridor in Mokoloki, Ofada-Mowe with our new pricing. Get prime 300SQM plots and build your future wealth with flexible payment options before the next price review.",
         paymentPlanHeader: {
@@ -259,11 +259,11 @@ export const propertiesData = {
         sizePaymentPlans: [
             {
                 sqm: "300sqm (Outright)",
-                price: "₦900,000"
+                price: "₦1,500,000"
             },
             {
                 sqm: "300sqm (2-4 Months Installment)",
-                price: "₦1,100,000"
+                price: "₦1,800,000"
             }
         ],
         landmarks: [
@@ -272,7 +272,7 @@ export const propertiesData = {
             "International Breweries"
         ],
         faq: [
-            { question: "What are the payment options?", answer: "You can pay ₦900,000 outright or ₦1.1 Million via a 2-4 month installment plan." }
+            { question: "What are the payment options?", answer: "You can pay ₦1,500,000 outright or ₦1.8 Million via a 2-4 month installment plan." }
         ]
     }
 };
