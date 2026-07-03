@@ -16,6 +16,7 @@ import Terms from './pages/Terms';
 import Refund from './pages/Refund';
 import RefundRequest from './pages/RefundRequest';
 import Subscribe from './pages/Subscribe';
+import Feedback from './pages/Feedback';
 import VersionCheck from './components/VersionCheck';
 import FloatingSupport from './components/FloatingSupport';
 import './styles/updates.css';
@@ -43,6 +44,7 @@ function App() {
                             <Route path="/refund" element={<Refund />} />
                             <Route path="/refund-request" element={<RefundRequest />} />
                             <Route path="/subscribe" element={<Subscribe />} />
+                            <Route path="/feedback" element={<Feedback />} />
                         </Routes>
                     </Layout>
                 </Router>

@@ -31,9 +31,17 @@ const Navbar = () => {
     ];
 
     const isPropertyDetail = location.pathname.startsWith('/properties/');
+    const noHeroPages = ['/feedback', '/refund-request', '/subscribe'];
+    const isNoHeroPage = noHeroPages.includes(location.pathname);
+
+    // Offset the navbar downward when unscrolled on no-hero pages so it sits cleanly below the announcement marquee
+    const navStyle = (isNoHeroPage && !isScrolled) ? { top: 'var(--marquee-height)' } : {};
 
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isPropertyDetail ? 'is-property-detail' : ''}`}>
+        <nav 
+            className={`navbar ${(isScrolled || isNoHeroPage) ? 'scrolled' : ''} ${isPropertyDetail ? 'is-property-detail' : ''}`}
+            style={navStyle}
+        >
             <div className="container nav-container">
                 <Link to="/" className="logo">
                     <img

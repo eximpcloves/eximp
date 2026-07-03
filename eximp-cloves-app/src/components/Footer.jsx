@@ -82,6 +82,7 @@ const Footer = () => {
                                     <li><Link to="/terms">License</Link></li>
                                     <li><Link to="/refund">Refund Policy</Link></li>
                                     <li><Link to="/refund-request">Request a Refund</Link></li>
+                                    <li><Link to="/feedback">Submit Feedback</Link></li>
                             </ul>
                         </div>
                     </div>
