@@ -12,10 +12,11 @@ export async function generateMetadata() {
 }
 
 export default async function PreviewPage({ params, searchParams }) {
-  const token = searchParams?.token;
+  const { slug } = await params;
+  const { token } = await searchParams;
   if (!token) notFound();
 
-  const post = await getPreviewBySlug(params.slug, token);
+  const post = await getPreviewBySlug(slug, token);
   if (!post) notFound();
 
   const html = (post.content && post.content.html) || '';

@@ -1,12 +1,16 @@
 {
     "rewrites": [
         {
+            "source": "/api/:path*",
+            "destination": "https://app.eximps-cloves.com/api/:path*"
+        },
+        {
             "source": "/blog",
-            "destination": "https://YOUR-BLOG-APP-PROJECT.vercel.app/blog"
+            "destination": "https://blogeximp.vercel.app/blog"
         },
         {
             "source": "/blog/:path*",
-            "destination": "https://YOUR-BLOG-APP-PROJECT.vercel.app/blog/:path*"
+            "destination": "https://blogeximp.vercel.app/blog/:path*"
         },
         {
             "source": "/(.*)",

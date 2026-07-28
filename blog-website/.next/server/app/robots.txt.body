@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /preview/
+
+Sitemap: https://eximps-cloves.com/blog/sitemap.xml

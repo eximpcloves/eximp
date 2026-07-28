@@ -6,7 +6,8 @@ import ReactionButton from '../components/ReactionButton';
 export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return {};
 
   const title = post.seo_title || post.title;
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function PostPage({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   const html = (post.content && post.content.html) || '';

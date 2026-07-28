@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import '../styles/subscribe.css';
 
-const API_URL = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_BACKEND_API_URL || 'https://app.eximps-cloves.com';
 const AUTOSAVE_KEY = 'ec_subscribe_draft';
 const TOTAL_STEPS = 5;
 
