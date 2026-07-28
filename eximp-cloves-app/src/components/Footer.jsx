@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, Twitter, Linkedin, Send, Music2, ShieldAlert } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
+const ERP_API_BASE = import.meta.env.VITE_ERP_API_BASE || 'https://app.eximps-cloves.com';
+
 const Footer = () => {
     const { isDark } = useTheme();
 
@@ -16,9 +18,7 @@ const Footer = () => {
                     </div>
                         <div className="footer-newsletter-content">
                             <div className="footer-newsletter-embed">
-                                {/* Lazy-load third-party embed to avoid third-party cookie issues until user consents */}
-                                {/** show a placeholder and require click to load the iframe **/}
-                                <NewsletterEmbed isDark={isDark} />
+                                <NewsletterSubscribeForm isDark={isDark} />
                             </div>
                         </div>
                 </div>
@@ -105,32 +105,106 @@ const Footer = () => {
 
 export default Footer;
 
-function NewsletterEmbed({ isDark }) {
-    const [loaded, setLoaded] = useState(false);
+function NewsletterSubscribeForm({ isDark }) {
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState(null); // null | 'pending_verification' | 'already_subscribed' | 'error'
+    const [message, setMessage] = useState('');
 
-    if (!loaded) {
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!email || !email.includes('@')) return;
+        setLoading(true);
+        setStatus(null);
+        setMessage('');
+        try {
+            const res = await fetch(`${ERP_API_BASE}/api/blog/public/newsletter/subscribe`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.detail || 'Failed to subscribe');
+            setStatus(data.status || 'pending_verification');
+            setMessage(data.message || '');
+            if (data.status !== 'already_subscribed') setEmail('');
+        } catch (err) {
+            setStatus('error');
+            setMessage(err.message || 'Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const cardBg = isDark ? '#0b1220' : '#f8fafc';
+    const inputBg = isDark ? '#111827' : '#ffffff';
+    const inputBorder = isDark ? '#1e2a3a' : '#d1d5db';
+    const textColor = isDark ? '#e2e8f0' : '#1f2937';
+    const subTextColor = isDark ? '#94a3b8' : '#6b7280';
+
+    if (status === 'pending_verification' || status === 'already_subscribed') {
         return (
-            <div style={{display:'flex',gap:8,alignItems:'center',justifyContent:'space-between',padding:'12px',borderRadius:8,background:isDark?"#0b1220":"#f8fafc"}}>
-                <div style={{flex:1}}>
-                    <strong>Newsletter preview</strong>
-                    <div style={{fontSize:13,color:isDark?"#cbd5e1":"#6b7280"}}>Load the Substack preview (third-party content).</div>
-                </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px', background: 'rgba(196,125,10,0.1)', border: '1px solid rgba(196,125,10,0.35)', borderRadius: 10 }}>
+                <span style={{ fontSize: 28 }}>{status === 'already_subscribed' ? '✨' : '📩'}</span>
                 <div>
-                    <button className="btn" onClick={() => setLoaded(true)}>Load preview</button>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: '#C47D0A' }}>
+                        {status === 'already_subscribed' ? 'Already Subscribed!' : 'Check your inbox!'}
+                    </div>
+                    <div style={{ fontSize: 13, color: subTextColor, marginTop: 2 }}>{message}</div>
                 </div>
             </div>
-        )
+        );
     }
 
     return (
-        <iframe
-            src="https://eximpcloves.substack.com/embed"
-            width="100%"
-            height="180"
-            loading="lazy"
-            style={{ border: 'none', background: '#ffffff', filter: isDark ? 'invert(1) hue-rotate(180deg) brightness(0.9)' : 'none', borderRadius: '8px' }}
-            title="Newsletter Subscribe"
-        />
-    )
+        <div style={{ background: cardBg, borderRadius: 10, padding: '18px 16px' }}>
+            <p style={{ fontSize: 14, color: subTextColor, margin: '0 0 14px' }}>
+                Get market updates, property developments, and strategic investment insights delivered straight to your inbox. No spam — unsubscribe anytime.
+            </p>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <input
+                    type="email"
+                    placeholder="Enter your email address..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    disabled={loading}
+                    style={{
+                        flex: '1 1 200px',
+                        padding: '10px 14px',
+                        borderRadius: 8,
+                        border: `1px solid ${inputBorder}`,
+                        background: inputBg,
+                        color: textColor,
+                        fontSize: 14,
+                        outline: 'none',
+                    }}
+                />
+                <button
+                    type="submit"
+                    disabled={loading}
+                    style={{
+                        background: '#C47D0A',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '10px 22px',
+                        fontWeight: 700,
+                        fontSize: 14,
+                        cursor: loading ? 'not-allowed' : 'pointer',
+                        whiteSpace: 'nowrap',
+                        opacity: loading ? 0.7 : 1,
+                    }}
+                >
+                    {loading ? 'Sending…' : 'Subscribe'}
+                </button>
+            </form>
+            {status === 'error' && (
+                <div style={{ color: '#ef4444', fontSize: 13, marginTop: 10 }}>{message}</div>
+            )}
+        </div>
+    );
 }
+
+
 
