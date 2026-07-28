@@ -240,10 +240,10 @@ export const propertiesData = {
             { question: "What are the payment options?", answer: "You can pay ₦500,000 outright or ₦650,000 via a 2-4 month installment plan." }
         ]
     },
-    "mokoloki-new-price": {
+    "northway-estate": {
         id: 7,
-        slug: "mokoloki-new-price",
-        title: "Mokoloki New Price Alert",
+        slug: "northway-estate",
+        title: "Northway Estate",
         location: "Mokoloki, Ofada - Mowe",
         state: "Ogun",
         price: "From ₦1,500,000",
@@ -271,8 +271,62 @@ export const propertiesData = {
             "Mowe-Ibafo Junction",
             "International Breweries"
         ],
+        documents: [
+            "Deed of Assignment",
+            "Contract of Sales",
+            "Payment Receipt",
+            "Acknowledgement Certificate",
+            "Allocation Letter"
+        ],
         faq: [
             { question: "What are the payment options?", answer: "You can pay ₦1,500,000 outright or ₦1.8 Million via a 2-4 month installment plan." }
+        ]
+    },
+    "northway-estate-phase2": {
+        id: 8,
+        slug: "northway-estate-phase2",
+        title: "Northway Estate",
+        location: "Mokoloki, Ofada - Mowe",
+        state: "Ogun",
+        price: "From ₦4,000,000",
+        status: "Now Selling",
+        tags: ["300 SQM", "500 SQM", "Provisional Survey", "Gated Community"],
+        image: "/assets/photo_2026-07-21_05-40-35.jpg",
+        mapEmbedUrl: "https://maps.google.com/maps?q=Mokoloki,+Ofada,+Ogun&hl=en&z=14&output=embed",
+        description: "Northway Estate is your chance to own premium land in the fast-growing Mokoloki corridor of Ofada-Mowe. This listing comes with a Provisional Survey in Client's Name, giving you added legal protection and peace of mind. Set in a fenced and gated community with essential infrastructure already in place, this is an ideal investment for those seeking secure, documented property.",
+        paymentPlanHeader: {
+            deposit: "₦500,000",
+            promo: "Includes Provisional Survey in Client's Name"
+        },
+        sizePaymentPlans: [
+            {
+                sqm: "300sqm",
+                price: "₦4,000,000"
+            },
+            {
+                sqm: "500sqm",
+                price: "₦7,000,000"
+            }
+        ],
+        landmarks: [
+            "Ofada Town",
+            "Mowe-Ibafo Junction",
+            "International Breweries"
+        ],
+        documents: [
+            "Deed of Assignment",
+            "Contract of Sales",
+            "Provisional Survey",
+            "Payment Receipt",
+            "Acknowledgement Certificate",
+            "Allocation Letter"
+        ],
+        faq: [
+            { question: "What title does this property come with?", answer: "This property comes with a Provisional Survey in Client's Name, giving you legal ownership documentation from the start." },
+            { question: "What sizes are available in Northway Estate?", answer: "Plots are available in 300sqm (₦4,000,000) and 500sqm (₦7,000,000)." },
+            { question: "Where is Northway Estate located?", answer: "The estate is located in Mokoloki, Ofada-Mowe, Ogun State — a rapidly developing corridor with excellent appreciation potential." },
+            { question: "What documents will I receive?", answer: "You will receive a Provisional Survey in Client's Name, Deed of Assignment, and Contract of Sales." },
+            { question: "Which account should payment be made into?", answer: "Bank: Providus Bank | Account number: 1308184591 | Account name: Eximp & Cloves Infrastructure Limited" }
         ]
     }
 };

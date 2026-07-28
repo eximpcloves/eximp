@@ -73,15 +73,21 @@ const WebinarSection = () => {
             <div className="container">
                 <div className="webinar-grid">
                     <Reveal className="webinar-left">
-                        <div className="webinar-tag">Monthly Training</div>
+                        <div className="webinar-tag">Monthly Webinar Series</div>
                         <h2>Future <span className="highlight-text">READY</span></h2>
-                        <p className="webinar-subtitle">STAYING RELEVANT IN BUSINESS IN AN AI-DRIVEN WORLD</p>
+                        <p className="webinar-subtitle">EQUIPPING PROFESSIONALS, ENTREPRENEURS & LEADERS FOR TOMORROW</p>
                     </Reveal>
 
                     <div className="webinar-right">
                         <Reveal delay={0.1}>
                             <p className="webinar-desc">
-                                A monthly practical webinar + training experience for business owners who want to use AI to grow sales, visibility, and relevance, without losing their human edge.
+                                Future Ready is an informative webinar aimed at equipping professionals, entrepreneurs, business owners, and aspiring leaders with practical insights to succeed in today’s rapidly evolving environment.
+                            </p>
+                            <p className="webinar-desc-paragraph" style={{ marginTop: '1rem', color: 'rgba(255, 255, 255, 0.75)', lineHeight: '1.7', fontSize: '1.05rem' }}>
+                                Led by industry experts, participants will acquire actionable strategies, new viewpoints, and real-world knowledge applicable to career advancement, business growth, leadership, and personal effectiveness.
+                            </p>
+                            <p className="webinar-desc-paragraph" style={{ marginTop: '1rem', color: 'rgba(255, 255, 255, 0.75)', lineHeight: '1.7', fontSize: '1.05rem' }}>
+                                Whether aiming to enhance your professional skills, foster meaningful workplace relationships, or prepare for future opportunities, Future Ready offers a platform to learn, connect, and develop.
                             </p>
                         </Reveal>
 
@@ -89,28 +95,28 @@ const WebinarSection = () => {
                             <div className="webinar-benefits">
                                 <div className="benefit-item">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>AI Monetization for Business owners</span>
+                                    <span>Actionable Strategies for Career Advancement &amp; Business Growth</span>
                                 </div>
                                 <div className="benefit-item">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Live Demos & Content Automation</span>
+                                    <span>Real-World Knowledge in Leadership &amp; Personal Effectiveness</span>
                                 </div>
                                 <div className="benefit-item">
                                     <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Growth Playbook: AI into Customers</span>
+                                    <span>Monthly Platform to Learn, Connect, and Prepare for Future Opportunities</span>
                                 </div>
                             </div>
                         </Reveal>
 
                         <Reveal delay={0.3}>
                             <button className="webinar-cta-btn" onClick={handleOpenModal}>
-                                Register to save your spot!
+                                Register for Future Ready
                                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>
                             </button>
-                            <p className="webinar-access-note">Access is FREE. Save your spot, learn, monetize, grow.</p>
+                            <p className="webinar-access-note">Join us as we gear up for the future with knowledge that empowers, motivates, and creates a lasting impact.</p>
                         </Reveal>
                     </div>
                 </div>
@@ -130,7 +136,7 @@ const WebinarSection = () => {
                                     </svg>
                                 </div>
                                 <h3 className="success-title">You're In! 🎉</h3>
-                                <p className="success-subtitle">Your spot has been saved for the next <strong>Future READY</strong> session.</p>
+                                <p className="success-subtitle">Your spot has been saved for the next <strong>Future READY</strong> monthly session.</p>
                                 <div className="success-detail-box">
                                     <p>📧 A confirmation email has been sent to your inbox.</p>
                                     <p>🔗 The meeting link will arrive 24 hours before we go live.</p>
@@ -143,8 +149,8 @@ const WebinarSection = () => {
                             <>
                                 <button className="modal-close" onClick={handleCloseModal}>&times;</button>
                                 <div className="modal-header">
-                                    <h3>Join Us Live on Meet</h3>
-                                    <p>Register to save your spot for the next monthly session.</p>
+                                    <h3>Join Us Live for Future Ready</h3>
+                                    <p>Register to save your spot for our upcoming monthly sessions.</p>
                                 </div>
 
                                 <form onSubmit={handleSubmit} className="webinar-form">
@@ -163,7 +169,7 @@ const WebinarSection = () => {
 
                                     <div className="form-group consent-group">
                                         <label className="consent-label">
-                                            Do you consent to Eximp &amp; Cloves reaching out to you regarding future training, business opportunities, and AI growth strategies? *
+                                            Do you consent to Eximp &amp; Cloves reaching out to you regarding future training, business opportunities, and leadership growth strategies? *
                                         </label>
                                         <div className="radio-group">
                                             <label className="radio-item">
@@ -193,3 +199,4 @@ const WebinarSection = () => {
 };
 
 export default WebinarSection;
+

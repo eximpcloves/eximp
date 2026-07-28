@@ -5,7 +5,7 @@ import { useVideo } from '../context/VideoContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, CheckCircle, Play, X, FileText, Maximize, ChevronDown, Loader2, ArrowUpRight } from 'lucide-react';
 
-const PropertyCard = ({ id, slug, title, location, price, image, tags, status, videoUrl, droneVideoUrl, landmarks, paymentPlans }) => {
+const PropertyCard = ({ id, slug, title, location, price, image, tags, status, videoUrl, droneVideoUrl, landmarks, paymentPlans, documents }) => {
     const navigate = useNavigate();
     const { setIsVideoPlaying } = useVideo();
     const [showVideo, setShowVideo] = useState(false);
@@ -75,6 +75,8 @@ const PropertyCard = ({ id, slug, title, location, price, image, tags, status, v
         "Acknowledgement Certificate",
         "Allocation Letter"
     ];
+
+    const displayDocuments = documents && documents.length > 0 ? documents : standardDocuments;
 
     return (
         <>
@@ -227,7 +229,7 @@ const PropertyCard = ({ id, slug, title, location, price, image, tags, status, v
                             >
                                 <h4 style={{ color: 'var(--primary-color)', fontSize: '0.8rem', marginBottom: '1rem' }}>Legal Documentation</h4>
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
-                                    {standardDocuments.map((doc, idx) => (
+                                    {displayDocuments.map((doc, idx) => (
                                         <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontSize: '0.85rem', marginBottom: '10px' }}>
                                             <FileText size={14} color="var(--primary-color)" /> {doc}
                                         </li>

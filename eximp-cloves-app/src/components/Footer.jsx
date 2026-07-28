@@ -68,7 +68,7 @@ const Footer = () => {
                         <div className="footer-links">
                             <h4>Help</h4>
                             <ul>
-                                <li><a href="https://eximpcloves.substack.com" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                                <li><a href="/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
                                 <li><a href="https://app.eximps-cloves.com/subscribe" target="_blank" rel="noopener noreferrer">Sales Subscription</a></li>
                                 <li><Link to="/contact">FAQ</Link></li>
                                 <li><Link to="/contact">Help Center</Link></li>

@@ -19,6 +19,7 @@ import Subscribe from './pages/Subscribe';
 import Feedback from './pages/Feedback';
 import VersionCheck from './components/VersionCheck';
 import FloatingSupport from './components/FloatingSupport';
+import CookieConsentBanner from './components/CookieConsentBanner';
 import './styles/updates.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <ThemeProvider>
             <VideoProvider>
                 <VersionCheck />
+                <CookieConsentBanner />
                 <Router>
                     <FloatingSupport />
                     <ScrollToTop />

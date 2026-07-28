@@ -3,8 +3,9 @@ import FeedbackForm from '../components/FeedbackForm';
 
 export default function Feedback() {
   return (
-    <div style={{padding: '40px 20px'}}>
+    <div className="feedback-page-wrapper">
       <FeedbackForm apiBase={import.meta.env.VITE_BACKEND_API_URL || ''} />
     </div>
   );
 }
+

@@ -1,0 +1,21 @@
+# Eximp & Cloves Blog
+
+> Insights, updates, and stories from Eximp & Cloves Infrastructure Ltd.
+> This file follows the emerging llms.txt convention to help AI assistants
+> and LLM-based crawlers understand and reference this site's content
+> accurately.
+
+## About
+
+Eximp & Cloves Infrastructure Ltd publishes articles covering company news,
+industry insight, and project updates. All published articles are publicly
+readable HTML (server-rendered, not JavaScript-gated) at /blog/{slug}.
+
+## Content
+
+- Full post index: /blog/sitemap.xml
+- Blog homepage: /blog
+
+Note: URLs under /blog/preview/* are unpublished drafts shared privately for
+review and are intentionally excluded from indexing (see /blog/robots.txt).
+Please do not reference or cite content from /blog/preview/* URLs.
