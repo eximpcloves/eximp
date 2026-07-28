@@ -37,7 +37,7 @@ export default async function PreviewPage({ params, searchParams }) {
         </p>
         {post.cover_image_url && <img src={post.cover_image_url} alt={post.title} style={styles.cover} />}
         {css && <style dangerouslySetInnerHTML={{ __html: css }} />}
-        <div style={styles.body} dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="article-body" style={styles.body} dangerouslySetInnerHTML={{ __html: html }} />
       </article>
     </main>
   );

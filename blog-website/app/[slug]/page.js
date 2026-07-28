@@ -98,7 +98,7 @@ export default async function PostPage({ params }) {
 
         {/* Scoped styles from the GrapesJS editor, then the actual post HTML */}
         {css && <style dangerouslySetInnerHTML={{ __html: css }} />}
-        <div style={styles.body} dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="article-body" style={styles.body} dangerouslySetInnerHTML={{ __html: html }} />
 
         <div style={styles.reactionRow}>
           <ReactionButton postId={post.id} initialCount={reactionData?.total_reactions || 0} />
@@ -111,17 +111,17 @@ export default async function PostPage({ params }) {
 }
 
 const styles = {
-  main: { fontFamily: 'Georgia, serif', maxWidth: 780, margin: '0 auto', padding: '40px 20px' },
+  main: { fontFamily: 'Georgia, serif', maxWidth: 780, margin: '0 auto', padding: '32px 16px 60px' },
   article: { marginBottom: 40 },
   header: { marginBottom: 32 },
   categoryBadge: { display: 'inline-block', background: '#f5efe6', color: '#C47D0A', padding: '4px 12px', borderRadius: 999, fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 },
-  title: { fontSize: 44, lineHeight: 1.2, margin: '0 0 20px', color: '#111' },
+  title: { fontSize: 'clamp(26px, 5.5vw, 42px)', lineHeight: 1.25, margin: '0 0 20px', color: '#111', fontWeight: 700 },
   authorBar: { display: 'flex', alignItems: 'center', gap: 14, fontFamily: 'Inter, sans-serif', margin: '0 0 24px', padding: '12px 16px', background: '#f9f9f9', borderRadius: 10, border: '1px solid #eee' },
   authorAvatar: { width: 42, height: 42, borderRadius: '50%', background: '#C47D0A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18, flexShrink: 0 },
   authorName: { fontWeight: 700, fontSize: 15, color: '#111' },
   authorMeta: { fontSize: 13, color: '#666', marginTop: 2 },
   department: { color: '#C47D0A', fontWeight: 600 },
   cover: { width: '100%', maxHeight: 440, objectFit: 'cover', borderRadius: 10 },
-  body: { fontSize: 19, lineHeight: 1.75, color: '#1a1a1a' },
+  body: { fontSize: 18, lineHeight: 1.75, color: '#1a1a1a' },
   reactionRow: { marginTop: 40, paddingTop: 24, borderTop: '1px solid #eee' },
 };
