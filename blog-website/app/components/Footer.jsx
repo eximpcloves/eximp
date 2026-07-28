@@ -1,4 +1,6 @@
 'use client';
+import NewsletterSubscribe from './NewsletterSubscribe';
+
 export default function Footer() {
   return (
     <footer style={styles.footer}>
@@ -19,6 +21,9 @@ export default function Footer() {
             Eximp & Cloves Infrastructure Ltd — Driving excellence in real estate, property developments, and capital growth.
           </p>
         </div>
+
+        <NewsletterSubscribe />
+
         <div style={styles.copyCol}>
           <p style={styles.copyText}>
             © {new Date().getFullYear()} Eximp & Cloves Infrastructure Ltd. All rights reserved.
@@ -28,6 +33,7 @@ export default function Footer() {
     </footer>
   );
 }
+
 
 const styles = {
   footer: {

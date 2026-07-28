@@ -79,6 +79,12 @@
       "regex": "^/sitemap\\.xml(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/verify-subscription",
+      "regex": "^/verify\\-subscription(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/verify\\-subscription(?:/)?$"
     }
   ],
   "dataRoutes": [],
