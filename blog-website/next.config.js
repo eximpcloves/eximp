@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const ERP_BACKEND = process.env.ERP_API_BASE || 'https://app.eximps-cloves.com';
+
 const nextConfig = {
   // This app is deployed standalone and reverse-proxied at /blog/* by your
   // existing web server (nginx/Caddy/whatever fronts the Vite SPA). It does
@@ -10,12 +12,21 @@ const nextConfig = {
       { protocol: 'https', hostname: '**.supabase.co' },
     ],
   },
-  // Next.js's basePath does NOT automatically prefix static /public files
-  // (only routed pages), so llms.txt would otherwise only be reachable at
-  // /llms.txt instead of /blog/llms.txt. This rewrite fixes that.
   async rewrites() {
     return [
+      // Next.js's basePath does NOT automatically prefix static /public files
+      // (only routed pages), so llms.txt would otherwise only be reachable at
+      // /llms.txt instead of /blog/llms.txt. This rewrite fixes that.
       { source: '/blog/llms.txt', destination: '/llms.txt' },
+
+      // Proxy /api/blog/* to the ERP backend so client-side components
+      // (CommentsSection, ReactionButton) work without hardcoding a domain
+      // in the build. NEXT_PUBLIC_ERP_API_BASE defaults to '' which means
+      // calls go to the Next.js host, which we then forward here.
+      {
+        source: '/api/blog/:path*',
+        destination: `${ERP_BACKEND}/api/blog/:path*`,
+      },
     ];
   },
 };
