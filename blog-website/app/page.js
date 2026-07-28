@@ -48,17 +48,26 @@ export default async function HomePage() {
                   <img src={post.cover_image_url} alt={post.title} style={styles.postImage} />
                 )}
                 <div style={styles.postContent}>
+                  {post.category && <span style={styles.cardCategory}>{post.category}</span>}
                   <h3 style={styles.postTitle}>{post.title}</h3>
                   {post.excerpt && <p style={styles.postExcerpt}>{post.excerpt}</p>}
-                  {post.published_at && (
-                    <p style={styles.postMeta}>
-                      {new Date(post.published_at).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </p>
-                  )}
+                  <div style={styles.postMetaRow}>
+                    <span style={styles.authorMeta}>
+                      👤 <strong>{post.author_name_snapshot || 'Eximp & Cloves'}</strong>
+                      {post.author_department_snapshot && (
+                        <span style={styles.deptMeta}> · {post.author_department_snapshot}</span>
+                      )}
+                    </span>
+                    {post.published_at && (
+                      <span style={styles.postMeta}>
+                        {new Date(post.published_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </Link>
             ))}
@@ -86,7 +95,11 @@ const styles = {
   postCard: { display: 'block', textDecoration: 'none', color: 'inherit', border: '1px solid #eee', borderRadius: 12, overflow: 'hidden', background: '#fff' },
   postImage: { width: '100%', height: 180, objectFit: 'cover', display: 'block' },
   postContent: { padding: '16px' },
+  cardCategory: { display: 'inline-block', background: '#f5efe6', color: '#C47D0A', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', marginBottom: 8 },
   postTitle: { fontFamily: 'Georgia, serif', fontSize: 20, margin: '0 0 8px', color: '#111' },
-  postExcerpt: { fontSize: 14, lineHeight: 1.6, color: '#666', margin: '0 0 10px' },
+  postExcerpt: { fontSize: 14, lineHeight: 1.6, color: '#666', margin: '0 0 12px' },
+  postMetaRow: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid #f5f5f5', paddingTop: 10, fontSize: 12 },
+  authorMeta: { color: '#444' },
+  deptMeta: { color: '#C47D0A', fontWeight: 600 },
   postMeta: { fontSize: 12, color: '#888', margin: 0 },
 };

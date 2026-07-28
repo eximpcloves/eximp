@@ -70,15 +70,27 @@ export default async function PostPage({ params }) {
 
       <article style={styles.article}>
         <header style={styles.header}>
+          {post.category && <span style={styles.categoryBadge}>{post.category}</span>}
           <h1 style={styles.title}>{post.title}</h1>
-          <p style={styles.byline}>
-            By <strong>{post.author_name_snapshot}</strong>
-            {post.author_department_snapshot ? ` · ${post.author_department_snapshot}` : ''}
-            {' · '}
-            <time dateTime={post.published_at}>
-              {new Date(post.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </time>
-          </p>
+          <div style={styles.authorBar}>
+            <div style={styles.authorAvatar}>
+              {(post.author_name_snapshot || 'E')[0].toUpperCase()}
+            </div>
+            <div>
+              <div style={styles.authorName}>
+                {post.author_name_snapshot || 'Eximp & Cloves Team'}
+              </div>
+              <div style={styles.authorMeta}>
+                {post.author_department_snapshot && <span style={styles.department}>{post.author_department_snapshot}</span>}
+                {post.author_department_snapshot && post.published_at && ' · '}
+                {post.published_at && (
+                  <time dateTime={post.published_at}>
+                    {new Date(post.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                )}
+              </div>
+            </div>
+          </div>
           {post.cover_image_url && (
             <img src={post.cover_image_url} alt={post.title} style={styles.cover} />
           )}
@@ -102,8 +114,13 @@ const styles = {
   main: { fontFamily: 'Georgia, serif', maxWidth: 780, margin: '0 auto', padding: '40px 20px' },
   article: { marginBottom: 40 },
   header: { marginBottom: 32 },
-  title: { fontSize: 44, lineHeight: 1.2, margin: '0 0 14px' },
-  byline: { fontFamily: 'Inter, sans-serif', fontSize: 13.5, color: '#777', margin: '0 0 20px' },
+  categoryBadge: { display: 'inline-block', background: '#f5efe6', color: '#C47D0A', padding: '4px 12px', borderRadius: 999, fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 },
+  title: { fontSize: 44, lineHeight: 1.2, margin: '0 0 20px', color: '#111' },
+  authorBar: { display: 'flex', alignItems: 'center', gap: 14, fontFamily: 'Inter, sans-serif', margin: '0 0 24px', padding: '12px 16px', background: '#f9f9f9', borderRadius: 10, border: '1px solid #eee' },
+  authorAvatar: { width: 42, height: 42, borderRadius: '50%', background: '#C47D0A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18, flexShrink: 0 },
+  authorName: { fontWeight: 700, fontSize: 15, color: '#111' },
+  authorMeta: { fontSize: 13, color: '#666', marginTop: 2 },
+  department: { color: '#C47D0A', fontWeight: 600 },
   cover: { width: '100%', maxHeight: 440, objectFit: 'cover', borderRadius: 10 },
   body: { fontSize: 19, lineHeight: 1.75, color: '#1a1a1a' },
   reactionRow: { marginTop: 40, paddingTop: 24, borderTop: '1px solid #eee' },
