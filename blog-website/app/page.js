@@ -2,7 +2,10 @@ import Link from 'next/link';
 import { getPublishedPosts } from '../lib/blogApi';
 import { FeaturedShelf, TickerShelf, TopContentShelf } from './components/BlogShelves';
 
-export const revalidate = 60;
+// Force dynamic rendering so newly-published posts appear immediately
+// without needing a re-deploy. ISR (revalidate: 60) can miss the first
+// publish because the page was pre-built with zero posts at deploy time.
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   let posts = [];
