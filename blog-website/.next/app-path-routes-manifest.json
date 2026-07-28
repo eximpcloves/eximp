@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "/_not-found",
-  "/robots.txt/route": "/robots.txt",
-  "/sitemap.xml/route": "/sitemap.xml",
-  "/[slug]/page": "/[slug]",
-  "/[slug]/preview/[slug]/page": "/[slug]/preview/[slug]",
-  "/page": "/"
-}

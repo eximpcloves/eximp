@@ -35,6 +35,25 @@ export function getPreferences() {
   try { return JSON.parse(raw); } catch { return { analytics: false, preferences: false }; }
 }
 
+export function acceptAllCookies() {
+  setCookie(CONSENT_COOKIE, 'accepted');
+  setCookie(PREFS_COOKIE, JSON.stringify({ analytics: true, preferences: true }));
+}
+
+export function rejectNonEssentialCookies() {
+  setCookie(CONSENT_COOKIE, 'rejected');
+  setCookie(PREFS_COOKIE, JSON.stringify({ analytics: false, preferences: false }));
+  // Reader-identifier cookie counts as "Preferences" — without consent, likes
+  // still work per-visit but "already liked" won't be remembered next time.
+  deleteCookie(READER_ID_COOKIE);
+}
+
+export function saveCustomPreferences(prefs) {
+  setCookie(CONSENT_COOKIE, 'custom');
+  setCookie(PREFS_COOKIE, JSON.stringify(prefs));
+  if (!prefs.preferences) deleteCookie(READER_ID_COOKIE);
+}
+
 // ── Reader identifier (anonymous, cookie/fingerprint-based) ─────
 // Only persisted if the visitor has allowed "Preferences" cookies. If not,
 // we generate a throwaway in-memory id for this pageview only, so the like
