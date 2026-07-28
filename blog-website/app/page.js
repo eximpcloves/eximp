@@ -216,10 +216,11 @@ const styles = {
   imgWrapper: {
     position: 'relative',
     overflow: 'hidden',
+    aspectRatio: '16 / 9',
   },
   postImage: {
     width: '100%',
-    height: 200,
+    height: '100%',
     objectFit: 'cover',
     display: 'block',
     transition: 'transform 0.3s',
